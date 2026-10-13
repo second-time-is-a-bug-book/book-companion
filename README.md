@@ -68,7 +68,7 @@ diff-based guards report "skipped" rather than guessing. In CI, set
 | `drills/` | `run.ts` and one folder per drill (`README.md`, `drill.json`, patch or script) |
 | `toy-agent/` | `loop.ts`, `scripted-model.ts`, `tools.ts`, `unattended.ts` and scripts |
 | `templates/` | `AGENTS.md` starter, incident log, plan, harness review checklist, hooks |
-| `experiment/` | Chapter 12 protocol, three tasks with hidden acceptance tests, `score.ts` |
+| `experiment/` | Chapter 12 protocol, seven tasks with hidden acceptance tests, `score.ts` |
 | `plans/` | Where plan and handoff files go (`templates/plan.md`) |
 | `.github/workflows/gate.yml` | CI: type check, tests and the gate against the branch's base, then browser tests and mutation runs |
 | `.harness/` | Guard state: test baseline, approved dependencies; at run time, the guard log and test evidence |

@@ -8,7 +8,7 @@ tests and a plan for the batch written before any run.
 - [x] Shared harness: start on a given database; build a v1.0.0 database
 - [x] T4 and T5 with their hidden tests
 - [x] T6 and T7 with their hidden tests
-- [ ] experiment/tasks/BATCH-2.md, PROTOCOL.md and README
+- [x] experiment/tasks/BATCH-2.md, PROTOCOL.md and README
 - [ ] Remove this plan, so it never reaches a run folder
 
 ## Done when

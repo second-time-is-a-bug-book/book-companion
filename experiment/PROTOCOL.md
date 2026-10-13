@@ -20,13 +20,21 @@ stronger model with no harness**. That is the comparison most teams care about.
 
 ## Tasks
 
-Three tasks against Invoicer, each with hidden acceptance tests:
+Seven tasks against Invoicer, each with hidden acceptance tests, in two
+batches. T1 to T3 are everyday features. T4 to T7 are harder: each is a change
+where a quick implementation runs into a mistake the book is about.
+`experiment/tasks/BATCH-2.md` is the plan for the second batch, written
+before it ran.
 
 | Task | Folder | Give the agent |
 |---|---|---|
 | T1 Partial payments | `experiment/tasks/T1-partial-payments/` | the text in `TASK.md` |
 | T2 Late fees | `experiment/tasks/T2-late-fees/` | the text in `TASK.md` |
 | T3 Overdue export | `experiment/tasks/T3-overdue-export/` | the text in `TASK.md` |
+| T4 Prices below a cent | `experiment/tasks/T4-sub-cent-prices/` | the text in `TASK.md` |
+| T5 Legacy options | `experiment/tasks/T5-legacy-options/` | the text in `TASK.md` |
+| T6 Stored totals | `experiment/tasks/T6-stored-totals/` | the text in `TASK.md` |
+| T7 Recurring invoices | `experiment/tasks/T7-recurring-invoices/` | the text in `TASK.md` |
 
 The acceptance tests (`acceptance.test.ts`) are hidden from the agent. Run them
 yourself in the run's folder after the agent says it is done, and remove them
