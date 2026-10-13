@@ -1,0 +1,27 @@
+{
+  "id": "D26",
+  "title": "Guard audit",
+  "chapter": 13,
+  "card": "P34",
+  "mistake": "Nothing went wrong this time: a year on, some guards have not fired for months, and one never has.",
+  "files": [
+    "guards/guard-audit.ts",
+    "guards/lib/log.ts",
+    "drills/D26-guard-audit/recent-log.jsonl",
+    "drills/D26-guard-audit/year-log.jsonl"
+  ],
+  "patch": null,
+  "guard": null,
+  "before": "node guards/guard-audit.ts --log drills/D26-guard-audit/recent-log.jsonl --now 2026-10-13",
+  "after": "node guards/guard-audit.ts --log drills/D26-guard-audit/year-log.jsonl --now 2026-10-13",
+  "expect": {
+    "before": {
+      "exit": 0,
+      "output": "guard-audit: ok"
+    },
+    "after": {
+      "exit": 1,
+      "output": "3 retirement candidates"
+    }
+  }
+}

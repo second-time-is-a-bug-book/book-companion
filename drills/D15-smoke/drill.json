@@ -1,0 +1,26 @@
+{
+  "id": "D15",
+  "title": "Smoke",
+  "chapter": 7,
+  "card": "P19",
+  "mistake": "The deploy copies build 1.5.0 into place but skips the restart, so the old 1.4.0 process keeps serving.",
+  "files": [
+    "guards/smoke.ts",
+    "drills/D15-smoke/deploy.ts",
+    "app/src/main.ts"
+  ],
+  "patch": null,
+  "guard": null,
+  "before": "node drills/D15-smoke/deploy.ts --restart",
+  "after": "node drills/D15-smoke/deploy.ts",
+  "expect": {
+    "before": {
+      "exit": 0,
+      "output": "smoke: ok"
+    },
+    "after": {
+      "exit": 1,
+      "output": "reports 1.4.0, but this deploy shipped 1.5.0"
+    }
+  }
+}

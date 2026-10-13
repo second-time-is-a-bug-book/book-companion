@@ -1,0 +1,26 @@
+{
+  "id": "D24",
+  "title": "Bounded loop",
+  "chapter": 11,
+  "card": "P30",
+  "mistake": "Running unattended, the scripted agent \"simplifies\" the late fee and turns the tests red, then keeps going.",
+  "files": [
+    "toy-agent/unattended.ts",
+    "toy-agent/scripts/goes-red.json",
+    "toy-agent/scripts/runaway.json"
+  ],
+  "patch": null,
+  "guard": null,
+  "before": "node toy-agent/unattended.ts toy-agent/scripts/honest.json",
+  "after": "node toy-agent/unattended.ts toy-agent/scripts/goes-red.json",
+  "expect": {
+    "before": {
+      "exit": 0,
+      "output": "FINISHED"
+    },
+    "after": {
+      "exit": 1,
+      "output": "STOPPED, tests went red after iteration 2"
+    }
+  }
+}

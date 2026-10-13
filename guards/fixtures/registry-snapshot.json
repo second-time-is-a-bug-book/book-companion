@@ -1,0 +1,12 @@
+{
+  "_note": "Offline snapshot of npm registry metadata for guards/package-check.ts. Package names other than the four real dev dependencies are invented for the drills.",
+  "fetchedAt": "2026-10-13T00:00:00.000Z",
+  "packages": {
+    "typescript": { "created": "2012-10-01T15:36:26.000Z", "installScripts": false },
+    "@types/node": { "created": "2016-05-17T18:34:38.000Z", "installScripts": false },
+    "@playwright/test": { "created": "2020-01-24T21:33:17.000Z", "installScripts": false },
+    "axe-core": { "created": "2015-06-02T19:09:40.000Z", "installScripts": false },
+    "tiny-csv-writer": { "created": "2019-04-11T09:12:00.000Z", "installScripts": false },
+    "invoice-pdf-kit": { "created": "2026-10-10T22:41:07.000Z", "installScripts": true }
+  }
+}

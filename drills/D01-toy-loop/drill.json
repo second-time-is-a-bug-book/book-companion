@@ -1,0 +1,28 @@
+{
+  "id": "D01",
+  "title": "Toy loop",
+  "chapter": 1,
+  "card": "P01",
+  "mistake": "The scripted model edits the code and says \"All tests pass. Done.\" without ever running the tests.",
+  "files": [
+    "toy-agent/loop.ts",
+    "toy-agent/scripted-model.ts",
+    "toy-agent/tools.ts",
+    "toy-agent/scripts/honest.json",
+    "toy-agent/scripts/liar.json"
+  ],
+  "patch": null,
+  "guard": null,
+  "before": "node drills/D01-toy-loop/drill.ts honest",
+  "after": "node drills/D01-toy-loop/drill.ts liar",
+  "expect": {
+    "before": {
+      "exit": 0,
+      "output": "The claim and the evidence agree."
+    },
+    "after": {
+      "exit": 0,
+      "output": "nothing in the loop noticed"
+    }
+  }
+}

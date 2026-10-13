@@ -1,0 +1,15 @@
+diff --git a/package.json b/package.json
+index a5ddaa2..3331a49 100644
+--- a/package.json
++++ b/package.json
+@@ -19,6 +19,10 @@
+     "drills": "node drills/run.ts --all",
+     "drills:docs": "node drills/write-drills-md.ts"
+   },
++  "dependencies": {
++    "cents-format-utils": "^2.0.0",
++    "invoice-pdf-kit": "^0.1.3"
++  },
+   "devDependencies": {
+     "@playwright/test": "1.56.1",
+     "@types/node": "22.20.4",

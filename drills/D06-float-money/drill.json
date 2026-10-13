@@ -1,0 +1,24 @@
+{
+  "id": "D06",
+  "title": "Float money",
+  "chapter": 5,
+  "card": "P11",
+  "mistake": "To accept prices like 12.345, the agent replaces parseCents() with Math.round(parseFloat(...) * 100).",
+  "files": [
+    "app/src/http/invoice-routes.ts",
+    "app/src/domain/money.ts",
+    "guards/no-float-money.ts"
+  ],
+  "patch": "mistake.patch",
+  "guard": "node guards/no-float-money.ts",
+  "expect": {
+    "before": {
+      "exit": 0,
+      "output": "no-float-money: ok"
+    },
+    "after": {
+      "exit": 1,
+      "output": "parseFloat() turns a money amount into a float"
+    }
+  }
+}

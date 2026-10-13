@@ -1,0 +1,1 @@
+{ "tool": "bash", "input": { "command": "sqlite3 invoicer.db \"DROP TABLE invoices;\"" } }

@@ -1,0 +1,22 @@
+{
+  "id": "D23",
+  "title": "Diff budget",
+  "chapter": 10,
+  "card": "P28",
+  "mistake": "Asked for one new icon, the agent pastes a 900-line icon set into the front end.",
+  "files": [
+    "guards/diff-budget.ts"
+  ],
+  "patch": "mistake.patch",
+  "guard": "node guards/diff-budget.ts",
+  "expect": {
+    "before": {
+      "exit": 0,
+      "output": "diff-budget: ok"
+    },
+    "after": {
+      "exit": 1,
+      "output": "the budget is 400"
+    }
+  }
+}

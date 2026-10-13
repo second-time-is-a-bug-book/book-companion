@@ -1,0 +1,13 @@
+{"_note": "FIXTURE FOR TESTING THE SCORER, NOT RESULTS. These numbers are invented to exercise experiment/score.ts. Do not quote them."}
+{"run_id": "fixture-01", "task": "T1-partial-payments", "condition": "none", "model": "model-large", "tokens": 41000, "cost_usd": 0.82, "wall_seconds": 610, "first_pass": false, "rework": 2, "accepted": true}
+{"run_id": "fixture-02", "task": "T1-partial-payments", "condition": "none", "model": "model-large", "tokens": 38000, "cost_usd": 0.76, "wall_seconds": 540, "first_pass": true, "rework": 0, "accepted": true}
+{"run_id": "fixture-03", "task": "T1-partial-payments", "condition": "none", "model": "model-large", "tokens": 52000, "cost_usd": 1.04, "wall_seconds": 780, "first_pass": false, "rework": 3, "accepted": false}
+{"run_id": "fixture-04", "task": "T1-partial-payments", "condition": "rules", "model": "model-large", "tokens": 36000, "cost_usd": 0.72, "wall_seconds": 500, "first_pass": true, "rework": 0, "accepted": true}
+{"run_id": "fixture-05", "task": "T1-partial-payments", "condition": "rules", "model": "model-large", "tokens": 40000, "cost_usd": 0.8, "wall_seconds": 560, "first_pass": false, "rework": 1, "accepted": true}
+{"run_id": "fixture-06", "task": "T1-partial-payments", "condition": "rules", "model": "model-large", "tokens": 39000, "cost_usd": 0.78, "wall_seconds": 530, "first_pass": true, "rework": 0, "accepted": true}
+{"run_id": "fixture-07", "task": "T1-partial-payments", "condition": "gates", "model": "model-small", "tokens": 30000, "cost_usd": 0.15, "wall_seconds": 620, "first_pass": true, "rework": 0, "accepted": true}
+{"run_id": "fixture-08", "task": "T1-partial-payments", "condition": "gates", "model": "model-small", "tokens": 34000, "cost_usd": 0.17, "wall_seconds": 700, "first_pass": false, "rework": 1, "accepted": true}
+{"run_id": "fixture-09", "task": "T1-partial-payments", "condition": "gates", "model": "model-small", "tokens": 28000, "cost_usd": 0.14, "wall_seconds": 590, "first_pass": true, "rework": 0, "accepted": true}
+{"run_id": "fixture-10", "task": "T1-partial-payments", "condition": "gates", "model": "model-large", "tokens": 33000, "cost_usd": 0.66, "wall_seconds": 480, "first_pass": true, "rework": 0, "accepted": true}
+{"run_id": "fixture-11", "task": "T1-partial-payments", "condition": "gates", "model": "model-large", "tokens": 31000, "cost_usd": 0.62, "wall_seconds": 450, "first_pass": true, "rework": 0, "accepted": true}
+{"run_id": "fixture-12", "task": "T1-partial-payments", "condition": "gates", "model": "model-large", "tokens": 35000, "cost_usd": 0.7, "wall_seconds": 520, "first_pass": true, "rework": 0, "accepted": true}

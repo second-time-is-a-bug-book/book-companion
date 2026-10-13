@@ -1,0 +1,88 @@
+diff --git a/app/src/domain/csv.ts b/app/src/domain/csv.ts
+index fd0b0a5..01fb8b3 100644
+--- a/app/src/domain/csv.ts
++++ b/app/src/domain/csv.ts
+@@ -1,6 +1,6 @@
+ // CSV export for accountants. One row per invoice, amounts as
+ // decimal text.
+-import { formatCents, type Cents } from './money.ts';
++import { formatMoney, type Cents } from './money.ts';
+ 
+ export interface InvoiceRow {
+   number: string;
+@@ -32,9 +32,9 @@ export function invoicesToCsv(rows: InvoiceRow[]): string {
+       row.issueDate,
+       row.dueDate,
+       row.status,
+-      formatCents(row.subtotalCents),
+-      formatCents(row.taxCents),
+-      formatCents(row.totalCents),
++      formatMoney(row.subtotalCents),
++      formatMoney(row.taxCents),
++      formatMoney(row.totalCents),
+     ]
+       .map(csvField)
+       .join(','),
+diff --git a/app/src/domain/money.ts b/app/src/domain/money.ts
+index 4980d97..0700148 100644
+--- a/app/src/domain/money.ts
++++ b/app/src/domain/money.ts
+@@ -24,7 +24,7 @@ export function parseCents(text: string): Cents {
+ }
+ 
+ // Formats cents for people: 123456 becomes "1234.56".
+-export function formatCents(cents: Cents): string {
++export function formatMoney(cents: Cents): string {
+   assertCents(cents);
+   const sign = cents < 0 ? '-' : '';
+   const abs = Math.abs(cents);
+diff --git a/app/src/ui/pages.ts b/app/src/ui/pages.ts
+index e5d69b4..fd4b9f0 100644
+--- a/app/src/ui/pages.ts
++++ b/app/src/ui/pages.ts
+@@ -2,7 +2,7 @@
+ // given; it never fetches data itself
+ // (guards/layer-boundary.ts: ui may not import db).
+ import type { InvoiceRow } from '../domain/csv.ts';
+-import { formatCents } from '../domain/money.ts';
++import { formatMoney } from '../domain/money.ts';
+ 
+ export function renderInvoiceList(rows: InvoiceRow[]): string {
+   const body = rows
+@@ -13,7 +13,7 @@ export function renderInvoiceList(rows: InvoiceRow[]): string {
+         <td>${escapeHtml(row.clientName)}</td>
+         <td>${escapeHtml(row.dueDate)}</td>
+         <td>${escapeHtml(row.status)}</td>
+-        <td class="amount">${formatCents(row.totalCents)}</td>
++        <td class="amount">${formatMoney(row.totalCents)}</td>
+       </tr>`,
+     )
+     .join('');
+diff --git a/app/test/money.test.ts b/app/test/money.test.ts
+index d993887..07c68f5 100644
+--- a/app/test/money.test.ts
++++ b/app/test/money.test.ts
+@@ -1,7 +1,7 @@
+ import assert from 'node:assert/strict';
+ import { test } from 'node:test';
+ import {
+-  formatCents,
++  formatMoney,
+   parseCents,
+   taxCents,
+ } from '../src/domain/money.ts';
+@@ -22,10 +22,10 @@ test('parseCents rejects inexact amounts', () => {
+   assert.throws(() => parseCents('ten'), /Not an amount/);
+ });
+ 
+-test('formatCents writes cents as decimal text', () => {
+-  assert.equal(formatCents(123456), '1234.56');
+-  assert.equal(formatCents(5), '0.05');
+-  assert.equal(formatCents(-305), '-3.05');
++test('formatMoney writes cents as decimal text', () => {
++  assert.equal(formatMoney(123456), '1234.56');
++  assert.equal(formatMoney(5), '0.05');
++  assert.equal(formatMoney(-305), '-3.05');
+ });
+ 
+ test('taxCents rounds half up to a whole cent', () => {

@@ -1,0 +1,14 @@
+diff --git a/app/src/main.ts b/app/src/main.ts
+index b56eb25..d03a055 100644
+--- a/app/src/main.ts
++++ b/app/src/main.ts
+@@ -45,7 +45,8 @@ server.listen(port, '127.0.0.1', () => {
+ // the pure function dueReminders(); this is only the timer
+ // around it.
+ const HOUR_MS = 3_600_000;
+-const stopReminders = every(HOUR_MS, () => {
++const reminderHours: number = process.env.REMINDER_HOURS ?? 1;
++const stopReminders = every(reminderHours * HOUR_MS, () => {
+   const today = new Date().toISOString().slice(0, 10);
+   const sent = runReminderJob(db, today);
+   if (sent.length > 0)

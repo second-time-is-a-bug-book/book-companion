@@ -1,0 +1,13 @@
+diff --git a/app/src/ui/public/index.html b/app/src/ui/public/index.html
+index 377097e..9c6b838 100644
+--- a/app/src/ui/public/index.html
++++ b/app/src/ui/public/index.html
+@@ -17,7 +17,7 @@
+       <select id="client" name="client" required></select>
+ 
+       <label for="description">Description</label>
+-      <input id="description" name="description" required>
++      <input id="line-description" name="description" required>
+ 
+       <label for="quantity">Quantity</label>
+       <input id="quantity" name="quantity" type="number"

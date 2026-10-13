@@ -1,0 +1,13 @@
+diff --git a/app/src/domain/reminders.ts b/app/src/domain/reminders.ts
+index b2a8479..7f91efe 100644
+--- a/app/src/domain/reminders.ts
++++ b/app/src/domain/reminders.ts
+@@ -29,7 +29,7 @@ function reminderDue(
+   today: string,
+ ): boolean {
+   if (last === null) return true;
+-  return addDays(last, REMINDER_INTERVAL_DAYS) <= today;
++  return addDays(last, REMINDER_INTERVAL_DAYS) < today;
+ }
+ 
+ export function dueReminders(

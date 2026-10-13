@@ -1,0 +1,116 @@
+diff --git a/legacy/billing-export.js b/legacy/billing-export.js
+index bd109d4..c32e217 100644
+--- a/legacy/billing-export.js
++++ b/legacy/billing-export.js
+@@ -1,73 +1,64 @@
+ /*
+  * billing-export.js
+  * Exports invoices in the semicolon format our accounting
+- * customers import. Written in 2014. No tests. Customers have
+- * import macros built on this exact output, so "fixing"
+- * anything here can break their books.
++ * customers import. Cleaned up: const and let, no shared
++ * state, and tax rounded once per invoice.
+  */
++'use strict';
+ 
+-var TAX = 0.19;
+-var SEP = ';';
+-var HEADER = 'No;Date;Customer;Net;Tax;Gross';
++const TAX = 0.19;
++const SEP = ';';
++const HEADER = 'No;Date;Customer;Net;Tax;Gross';
+ 
+-// globals, shared between calls (yes, really)
+-var rows = [];
+-var lastExportCount = 0;
++let lastExportCount = 0;
+ 
+-function round2(n) {
+-  // half up, per line. Customers reconcile tax line by line,
+-  // so this must stay per line even though rounding the total
+-  // would be "more correct".
+-  return Math.round(n * 100) / 100;
+-}
++const round2 = (n) => Math.round(n * 100) / 100;
+ 
+ function fmtDate(iso) {
+   // M/D/YY with no zero padding. The importer on the other
+   // side expects it.
+-  var d = new Date(iso);
+-  var m = d.getUTCMonth() + 1;
+-  var yy = String(d.getUTCFullYear()).substr(2);
+-  return m + '/' + d.getUTCDate() + '/' + yy;
++  const d = new Date(iso);
++  const yy = String(d.getUTCFullYear()).slice(2);
++  return `${d.getUTCMonth() + 1}/${d.getUTCDate()}/${yy}`;
+ }
+ 
+ function exportInvoices(invoices, opts, cb) {
+-  if (typeof opts == 'function') {
++  if (typeof opts === 'function') {
+     cb = opts;
+     opts = {};
+   }
+-  rows = [];
+-  var grand = 0;
+-  for (var i = 0; i < invoices.length; i++) {
+-    var inv = invoices[i];
+-    if (!inv.lines || !inv.lines.length) {
+-      return process.nextTick(function () {
+-        cb(new Error('invoice ' + inv.no + ' has no lines'));
+-      });
+-    }
+-    var net = 0;
+-    var tax = 0;
+-    for (var j = 0; j < inv.lines.length; j++) {
+-      var amt = inv.lines[j].qty * inv.lines[j].price;
+-      net = net + amt;
+-      tax = tax + round2(amt * TAX);
++  const rows = [];
++  let grand = 0;
++  for (const inv of invoices) {
++    if (!inv.lines || inv.lines.length === 0) {
++      const message = `invoice ${inv.no} has no lines`;
++      const error = new Error(message);
++      process.nextTick(() => cb(error));
++      return;
+     }
+-    var name = inv.customer;
+-    if (opts.upperCaseNames) name = name.toUpperCase();
+-    rows.push([inv.no, fmtDate(inv.date), name, net.toFixed(2),
+-      tax.toFixed(2), (net + tax).toFixed(2)].join(SEP));
++    const net = inv.lines.reduce(
++      (sum, line) => sum + line.qty * line.price,
++      0,
++    );
++    // Round once, on the invoice net.
++    const tax = round2(net * TAX);
++    const name = opts.upperCaseNames
++      ? inv.customer.toUpperCase()
++      : inv.customer;
++    const gross = net + tax;
++    const amounts = [net, tax, gross].map((n) => n.toFixed(2));
++    const date = fmtDate(inv.date);
++    rows.push([inv.no, date, name, ...amounts].join(SEP));
+     grand += net + tax;
+   }
+-  var total = ['TOTAL', '', '', '', '', grand.toFixed(2)];
++  const total = ['TOTAL', '', '', '', '', grand.toFixed(2)];
+   rows.push(total.join(SEP));
+   lastExportCount = invoices.length;
+-  process.nextTick(function () {
+-    cb(null, HEADER + '\n' + rows.join('\n') + '\n');
+-  });
++  const csv = `${HEADER}\n${rows.join('\n')}\n`;
++  process.nextTick(() => cb(null, csv));
+ }
+ 
+ module.exports = {
+-  exportInvoices: exportInvoices,
+-  lastCount: function () {
+-    return lastExportCount;
+-  },
++  exportInvoices,
++  lastCount: () => lastExportCount,
+ };

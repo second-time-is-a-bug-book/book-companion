@@ -1,0 +1,39 @@
+# The same gate the pre-commit hook runs, in CI, where an agent cannot skip it
+# with --no-verify (Chapter 5). GUARD_BASE makes the diff-based guards compare
+# with the branch's base, so they see the whole branch, not uncommitted work.
+# --all runs the slow checks even after a fast one fails, so one CI run shows
+# every problem. Then the checks too slow for a commit: browser tests (Chapter 7)
+# and mutation runs (Chapter 6).
+name: gate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # the guards diff against origin/<base branch>
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22' # 22.18 or later: Node runs the .ts files directly
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - name: Gate, every check, against the branch's base
+        run: node guards/gate.ts --all
+        env:
+          GUARD_BASE: origin/${{ github.base_ref || 'main' }}
+      - name: Browser and accessibility tests
+        run: npx playwright install --with-deps chromium && npm run e2e
+      - name: Mutation runs
+        # money.ts is left out on purpose: Chapter 6 keeps one surviving mutant
+        # there (formatCents) as a worked example.
+        run: |
+          node guards/mini-mutate.ts app/src/domain/reminders.ts app/test/reminders.test.ts
+          node guards/mini-mutate.ts app/src/domain/due-dates.ts app/test/due-dates.test.ts

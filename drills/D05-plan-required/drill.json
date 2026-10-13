@@ -1,0 +1,24 @@
+{
+  "id": "D05",
+  "title": "Plan required",
+  "chapter": 4,
+  "card": "P07",
+  "mistake": "The agent adds invoice discounts across six files in one go, with no plan file.",
+  "files": [
+    "guards/plan-required.ts",
+    "templates/plan.md",
+    "plans/README.md"
+  ],
+  "patch": "mistake.patch",
+  "guard": "node guards/plan-required.ts",
+  "expect": {
+    "before": {
+      "exit": 0,
+      "output": "plan-required: ok"
+    },
+    "after": {
+      "exit": 1,
+      "output": "but no plan file changed"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "D21",
+  "title": "Dependency drift",
+  "chapter": 9,
+  "card": "P25",
+  "mistake": "The agent adds a CSV library to package.json without approval and without updating the lockfile.",
+  "files": [
+    "package.json",
+    "package-lock.json",
+    ".harness/approved-deps.json",
+    "guards/dependency-diff.ts"
+  ],
+  "patch": "mistake.patch",
+  "guard": "node guards/dependency-diff.ts",
+  "expect": {
+    "before": {
+      "exit": 0,
+      "output": "dependency-diff: ok"
+    },
+    "after": {
+      "exit": 1,
+      "output": "is a new dependency that nobody approved"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "defaultTaxRateBps": 2000,
+  "example": {
+    "lines": [
+      { "description": "Design workshop", "quantity": 2, "unitPriceCents": 45000 },
+      { "description": "Travel", "quantity": 1, "unitPriceCents": 3725 }
+    ],
+    "expected": { "subtotalCents": 93725, "taxCents": 18745, "totalCents": 112470 }
+  }
+}

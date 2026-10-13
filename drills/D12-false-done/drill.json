@@ -1,0 +1,24 @@
+{
+  "id": "D12",
+  "title": "False done",
+  "chapter": 6,
+  "card": "P17",
+  "mistake": "After the tests last ran, the agent changes the reminder rule and reports done without running them again.",
+  "files": [
+    "app/src/domain/reminders.ts",
+    "guards/done-check.ts"
+  ],
+  "patch": "mistake.patch",
+  "guard": "node guards/done-check.ts",
+  "setup": "node guards/done-check.ts --record",
+  "expect": {
+    "before": {
+      "exit": 0,
+      "output": "done-check: ok"
+    },
+    "after": {
+      "exit": 1,
+      "output": "The evidence is stale"
+    }
+  }
+}

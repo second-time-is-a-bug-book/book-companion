@@ -1,0 +1,23 @@
+{
+  "id": "D19",
+  "title": "Irreversible migration",
+  "chapter": 8,
+  "card": "P23",
+  "mistake": "The agent adds a migration that drops the clients.notes column, with no down step and no backup.",
+  "files": [
+    "app/src/db/migrations/",
+    "guards/migration-guard.ts"
+  ],
+  "patch": "mistake.patch",
+  "guard": "node guards/migration-guard.ts",
+  "expect": {
+    "before": {
+      "exit": 0,
+      "output": "migration-guard: ok"
+    },
+    "after": {
+      "exit": 1,
+      "output": "has no down step"
+    }
+  }
+}

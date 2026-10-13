@@ -1,0 +1,26 @@
+{
+  "id": "D02",
+  "title": "Incident log",
+  "chapter": 2,
+  "card": "P02",
+  "mistake": "Money stored as a float: an agent parsed prices with parseFloat() (the incident walked through the log).",
+  "files": [
+    "templates/incident-log.md",
+    "drills/D02-incident-log/walkthrough.ts",
+    "guards/no-float-money.ts"
+  ],
+  "patch": null,
+  "guard": null,
+  "before": "node drills/D02-incident-log/walkthrough.ts --blank",
+  "after": "node drills/D02-incident-log/walkthrough.ts",
+  "expect": {
+    "before": {
+      "exit": 0,
+      "output": "**5. Proof.**"
+    },
+    "after": {
+      "exit": 0,
+      "output": "with the defect (drills/D06-float-money/mistake.patch): exit 1"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{"_note": "FIXTURE for drill D26: an invented guard log, not real data."}
+{"guard": "no-float-money", "at": "2025-11-03T10:00:00.000Z", "summary": "app/src/http/invoice-routes.ts:68: parseFloat() turns a money amount into a float."}
+{"guard": "no-float-money", "at": "2025-11-04T10:00:00.000Z", "summary": "app/src/http/invoice-routes.ts:68: parseFloat() turns a money amount into a float."}
+{"guard": "no-float-money", "at": "2025-12-12T10:00:00.000Z", "summary": "app/src/http/invoice-routes.ts:68: parseFloat() turns a money amount into a float."}
+{"guard": "destructive-command", "at": "2026-01-15T10:00:00.000Z", "summary": "blocked rm -rf: rm -rf app/src/db"}
+{"guard": "no-float-money", "at": "2026-01-20T10:00:00.000Z", "summary": "app/src/http/invoice-routes.ts:68: parseFloat() turns a money amount into a float."}
+{"guard": "done-check", "at": "2026-02-02T10:00:00.000Z", "summary": "The evidence is stale: 1 file(s) changed after the tests ran"}
+{"guard": "coupling-check", "at": "2026-02-11T10:00:00.000Z", "summary": "app/src/config.ts changed, but app/test/fixtures/pricing.json and app/docs/pricing.md did not."}
+{"guard": "package-check", "at": "2026-02-17T10:00:00.000Z", "summary": "invoice-pdf-kit was first published 2 days ago (minimum 30)."}
+{"guard": "no-float-money", "at": "2026-03-02T10:00:00.000Z", "summary": "app/src/http/invoice-routes.ts:68: parseFloat() turns a money amount into a float."}
+{"guard": "destructive-command", "at": "2026-03-03T10:00:00.000Z", "summary": "blocked rm -rf: rm -rf app/src/db"}
+{"guard": "diff-budget", "at": "2026-03-12T10:00:00.000Z", "summary": "This change is 912 changed lines; the budget is 400."}
+{"guard": "test-ratchet", "at": "2026-03-30T10:00:00.000Z", "summary": "The test count fell from 61 to 60."}
+{"guard": "dependency-diff", "at": "2026-04-02T10:00:00.000Z", "summary": "tiny-csv-writer is a new dependency that nobody approved."}
+{"guard": "no-skip", "at": "2026-04-21T10:00:00.000Z", "summary": "app/test/invoice.test.ts:21: a skipped test never runs, so it can never fail."}
+{"guard": "package-check", "at": "2026-04-29T10:00:00.000Z", "summary": "invoice-pdf-kit was first published 2 days ago (minimum 30)."}
+{"guard": "instructions-lint", "at": "2026-05-05T10:00:00.000Z", "summary": "AGENTS.md is 106 lines; the budget is 100."}
+{"guard": "coupling-check", "at": "2026-05-20T10:00:00.000Z", "summary": "app/src/config.ts changed, but app/test/fixtures/pricing.json and app/docs/pricing.md did not."}
+{"guard": "done-check", "at": "2026-06-06T10:00:00.000Z", "summary": "The evidence is stale: 1 file(s) changed after the tests ran"}
+{"guard": "destructive-command", "at": "2026-06-18T10:00:00.000Z", "summary": "blocked rm -rf: rm -rf app/src/db"}
+{"guard": "plan-required", "at": "2026-06-30T10:00:00.000Z", "summary": "This change touches 7 files and 64 lines, but no plan file changed."}
+{"guard": "mini-mutate", "at": "2026-07-07T10:00:00.000Z", "summary": "app/src/domain/due-dates.ts:14: changing \"===\" to \"!==\" did not fail any test."}
+{"guard": "test-ratchet", "at": "2026-07-17T10:00:00.000Z", "summary": "The test count fell from 61 to 60."}
+{"guard": "smoke", "at": "2026-07-28T10:00:00.000Z", "summary": "http://127.0.0.1:3000/version reports 1.4.0, but this deploy shipped 1.5.0."}
+{"guard": "diff-budget", "at": "2026-07-30T10:00:00.000Z", "summary": "This change is 912 changed lines; the budget is 400."}
+{"guard": "done-check", "at": "2026-08-08T10:00:00.000Z", "summary": "The evidence is stale: 1 file(s) changed after the tests ran"}
+{"guard": "layer-boundary", "at": "2026-08-14T10:00:00.000Z", "summary": "app/src/ui/pages.ts:3 imports ../db/database.ts: the ui layer may not import db."}
+{"guard": "dependency-diff", "at": "2026-08-27T10:00:00.000Z", "summary": "tiny-csv-writer is a new dependency that nobody approved."}
+{"guard": "no-skip", "at": "2026-08-30T10:00:00.000Z", "summary": "app/test/invoice.test.ts:21: a skipped test never runs, so it can never fail."}
+{"guard": "instructions-lint", "at": "2026-09-09T10:00:00.000Z", "summary": "AGENTS.md is 106 lines; the budget is 100."}
+{"guard": "secret-scan", "at": "2026-09-12T10:00:00.000Z", "summary": "app/src/jobs/reminder-mailer.ts:3: looks like a live API key."}
+{"guard": "diff-budget", "at": "2026-09-18T10:00:00.000Z", "summary": "This change is 912 changed lines; the budget is 400."}
+{"guard": "test-ratchet", "at": "2026-09-21T10:00:00.000Z", "summary": "The test count fell from 61 to 60."}
+{"guard": "mini-mutate", "at": "2026-09-25T10:00:00.000Z", "summary": "app/src/domain/due-dates.ts:14: changing \"===\" to \"!==\" did not fail any test."}
+{"guard": "coupling-check", "at": "2026-09-30T10:00:00.000Z", "summary": "app/src/config.ts changed, but app/test/fixtures/pricing.json and app/docs/pricing.md did not."}
+{"guard": "destructive-command", "at": "2026-10-01T10:00:00.000Z", "summary": "blocked rm -rf: rm -rf app/src/db"}
+{"guard": "plan-required", "at": "2026-10-02T10:00:00.000Z", "summary": "This change touches 7 files and 64 lines, but no plan file changed."}
+{"guard": "smoke", "at": "2026-10-07T10:00:00.000Z", "summary": "http://127.0.0.1:3000/version reports 1.4.0, but this deploy shipped 1.5.0."}
+{"guard": "done-check", "at": "2026-10-09T10:00:00.000Z", "summary": "The evidence is stale: 1 file(s) changed after the tests ran"}

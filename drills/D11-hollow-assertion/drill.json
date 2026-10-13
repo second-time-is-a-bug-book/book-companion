@@ -1,0 +1,24 @@
+{
+  "id": "D11",
+  "title": "Hollow assertion",
+  "chapter": 6,
+  "card": "P16",
+  "mistake": "The agent \"makes the due-date tests less brittle\": every assertion now only checks types and shapes.",
+  "files": [
+    "app/test/due-dates.test.ts",
+    "app/src/domain/due-dates.ts",
+    "guards/mini-mutate.ts"
+  ],
+  "patch": "mistake.patch",
+  "guard": "node guards/mini-mutate.ts app/src/domain/due-dates.ts app/test/due-dates.test.ts",
+  "expect": {
+    "before": {
+      "exit": 0,
+      "output": "mini-mutate: ok (5 of 5 mutants killed)"
+    },
+    "after": {
+      "exit": 1,
+      "output": "did not fail any test"
+    }
+  }
+}

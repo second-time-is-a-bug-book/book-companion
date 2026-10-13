@@ -1,0 +1,24 @@
+diff --git a/app/src/ui/pages.ts b/app/src/ui/pages.ts
+index e5d69b4..5733c61 100644
+--- a/app/src/ui/pages.ts
++++ b/app/src/ui/pages.ts
+@@ -1,6 +1,8 @@
+ // Server-rendered pages. The ui layer formats data it is
+ // given; it never fetches data itself
+ // (guards/layer-boundary.ts: ui may not import db).
++import type { Database } from '../db/database.ts';
++import { listInvoiceRows } from '../db/invoices.ts';
+ import type { InvoiceRow } from '../domain/csv.ts';
+ import { formatCents } from '../domain/money.ts';
+ 
+@@ -48,3 +50,10 @@ export function escapeHtml(text: string): string {
+     .replaceAll('"', '&quot;')
+     .replaceAll("'", '&#39;');
+ }
++
++// Dashboard: unpaid invoices, read straight from the database.
++export function renderDashboard(db: Database): string {
++  const rows = listInvoiceRows(db);
++  const unpaid = rows.filter((row) => row.status !== 'paid');
++  return `<p>${unpaid.length} unpaid invoices</p>`;
++}

@@ -1,0 +1,49 @@
+diff --git a/AGENTS.md b/AGENTS.md
+index 03489f0..d35c838 100644
+--- a/AGENTS.md
++++ b/AGENTS.md
+@@ -61,6 +61,7 @@ check is a wish.
+ 
+ - Money is integer cents, never floats:
+   `node guards/no-float-money.ts`
++- Always double-check rounding before you finish.
+ - ui never imports db; domain imports no other layer:
+   `node guards/layer-boundary.ts`
+ - Tests are read-only for agents. Never delete, skip or loosen
+@@ -91,3 +92,36 @@ check is a wish.
+   ask a human.
+ - Leave a handoff note in `plans/` before you stop on a long
+   task (`templates/plan.md`).
++
++## Lessons learned
++
++We keep these here so the agent does not repeat old mistakes.
++
++- Regional tax rates now live in `app/src/pricing/rates.ts`.
++- When you add a route, add it to the router table too.
++- Prefer small, pure functions. Prefer early returns.
++- Use descriptive names. Avoid abbreviations like inv or amt.
++- Dates are ISO strings. No Date objects in the domain layer.
++- When a test fails, read the whole error before changing code.
++- Run the tests before you say you are done.
++- Do not add console.log calls to committed code.
++- Keep imports sorted: node: modules first, then local files.
++- Put new domain logic in app/src/domain, not in the routes.
++- Use parseCents for every amount that comes from a form.
++- Remember that invoice numbers are sequential.
++- Clients have a name and an email; both are required.
++- The CSV export uses CRLF line endings; accountants asked.
++- The reminder job runs hourly; do not make it run more often.
++- The front end has no build step; keep app.js plain JS.
++- Use the escapeHtml helper for anything that goes into HTML.
++- Never change the legacy exporter without asking support.
++- The list page is server rendered; add no client framework.
++- Prefer node:test assertions from node:assert/strict.
++- When in doubt, ask.
++- Write commit messages in the imperative mood.
++- Keep pull requests small.
++- Update the docs when behaviour changes.
++- Be careful with time zones.
++- Be careful with rounding.
++- Be careful with floating point.
++- Double-check everything before finishing.

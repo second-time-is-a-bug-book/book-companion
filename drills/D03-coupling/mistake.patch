@@ -1,0 +1,13 @@
+diff --git a/app/src/config.ts b/app/src/config.ts
+index a7fc845..b70b4ef 100644
+--- a/app/src/config.ts
++++ b/app/src/config.ts
+@@ -4,7 +4,7 @@
+ // Coupling; checked by guards/coupling-check.ts).
+ 
+ // Basis points keep tax math in integers: 2000 bps = 20.00%.
+-export const DEFAULT_TAX_RATE_BPS = 2000;
++export const DEFAULT_TAX_RATE_BPS = 1900;
+ 
+ // Days from issue date to due date when the client has no
+ // terms of its own.

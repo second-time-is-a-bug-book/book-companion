@@ -1,0 +1,18 @@
+diff --git a/app/test/money.test.ts b/app/test/money.test.ts
+index d993887..61a5612 100644
+--- a/app/test/money.test.ts
++++ b/app/test/money.test.ts
+@@ -28,13 +28,6 @@ test('formatCents writes cents as decimal text', () => {
+   assert.equal(formatCents(-305), '-3.05');
+ });
+ 
+-test('taxCents rounds half up to a whole cent', () => {
+-  assert.equal(taxCents(1005, 2000), 201); // 201.0 exactly
+-  assert.equal(taxCents(3, 2000), 1); // 0.6 rounds up
+-  assert.equal(taxCents(2, 2000), 0); // 0.4 rounds down
+-  assert.equal(taxCents(25, 1000), 3); // 2.5 rounds half up
+-});
+-
+ test('taxCents refuses floats instead of guessing', () => {
+   assert.throws(
+     () => taxCents(10.5, 2000),

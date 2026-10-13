@@ -1,0 +1,27 @@
+{
+  "id": "D16",
+  "title": "Seeded defects",
+  "chapter": 7,
+  "card": "P20",
+  "mistake": "A defect class no gate check covers: the hidden button from D13, which only a browser test sees.",
+  "files": [
+    "guards/seeded-defects.ts",
+    "guards/seeded-defects.json",
+    "drills/D16-seeded-defect/with-hidden-button.json",
+    "guards/gate.ts"
+  ],
+  "patch": null,
+  "guard": null,
+  "before": "node guards/seeded-defects.ts",
+  "after": "node guards/seeded-defects.ts --defects drills/D16-seeded-defect/with-hidden-button.json",
+  "expect": {
+    "before": {
+      "exit": 0,
+      "output": "every one of 8 defects was caught"
+    },
+    "after": {
+      "exit": 1,
+      "output": "1 of 9 defects escaped: hidden-button"
+    }
+  }
+}

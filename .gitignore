@@ -1,0 +1,13 @@
+# No trailing slash: drills symlink node_modules into scratch copies,
+# and a pattern ending in "/" would not match a symlink.
+node_modules
+test-results
+playwright-report
+*.db
+
+# Written by guards at run time (see guards/lib/log.ts and guards/done-check.ts)
+.harness/guard-log.jsonl
+.harness/evidence.json
+
+# Written by the agent to stop before done-check passes (templates/hooks/agent-stop.sh)
+.harness/stop-note*.md

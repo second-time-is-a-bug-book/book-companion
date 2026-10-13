@@ -1,0 +1,13 @@
+diff --git a/app/src/domain/due-dates.ts b/app/src/domain/due-dates.ts
+index 70d26bc..31b47a5 100644
+--- a/app/src/domain/due-dates.ts
++++ b/app/src/domain/due-dates.ts
+@@ -18,7 +18,7 @@ export function isOverdue(
+   dueDate: string,
+   today: string,
+ ): boolean {
+-  return status === 'sent' && today > dueDate;
++  return status === 'sent' && today >= dueDate;
+ }
+ 
+ export function daysOverdue(

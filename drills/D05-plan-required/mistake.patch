@@ -1,0 +1,141 @@
+diff --git a/app/docs/pricing.md b/app/docs/pricing.md
+index 5243d96..64674bd 100644
+--- a/app/docs/pricing.md
++++ b/app/docs/pricing.md
+@@ -11,6 +11,11 @@ change all three together.
+ | Payment terms | 30 days | `DEFAULT_PAYMENT_TERMS_DAYS` |
+ | Reminder interval | 7 days | `REMINDER_INTERVAL_DAYS` |
+ 
++## Discounts
++
++A fixed discount comes off the total after tax. It never
++takes the total below zero.
++
+ ## How tax is rounded
+ 
+ Amounts are integer cents. Tax is computed once per invoice, on
+diff --git a/app/src/db/migrations/004_add_invoice_discount.sql b/app/src/db/migrations/004_add_invoice_discount.sql
+new file mode 100644
+index 0000000..299215c
+--- /dev/null
++++ b/app/src/db/migrations/004_add_invoice_discount.sql
+@@ -0,0 +1,6 @@
++-- migrate:up
++ALTER TABLE invoices
++  ADD COLUMN discount_cents INTEGER NOT NULL DEFAULT 0;
++
++-- migrate:down
++ALTER TABLE invoices DROP COLUMN discount_cents;
+diff --git a/app/src/domain/csv.ts b/app/src/domain/csv.ts
+index fd0b0a5..78c7995 100644
+--- a/app/src/domain/csv.ts
++++ b/app/src/domain/csv.ts
+@@ -11,6 +11,7 @@ export interface InvoiceRow {
+   subtotalCents: Cents;
+   taxCents: Cents;
+   totalCents: Cents;
++  discountCents?: Cents;
+ }
+ 
+ const HEADER = [
+@@ -21,6 +22,7 @@ const HEADER = [
+   'status',
+   'subtotal',
+   'tax',
++  'discount',
+   'total',
+ ];
+ 
+@@ -34,6 +36,7 @@ export function invoicesToCsv(rows: InvoiceRow[]): string {
+       row.status,
+       formatCents(row.subtotalCents),
+       formatCents(row.taxCents),
++      formatCents(row.discountCents ?? 0),
+       formatCents(row.totalCents),
+     ]
+       .map(csvField)
+diff --git a/app/src/domain/invoice.ts b/app/src/domain/invoice.ts
+index d61c7bb..e45eeac 100644
+--- a/app/src/domain/invoice.ts
++++ b/app/src/domain/invoice.ts
+@@ -90,6 +90,17 @@ export function dueDateFor(
+   return addDays(issueDate, termsDays);
+ }
+ 
++// A fixed discount comes off the total after tax, and never
++// below zero.
++export function applyDiscount(
++  totals: Totals,
++  discountCents: Cents,
++): Totals {
++  const discount = Math.min(discountCents, totals.totalCents);
++  const totalCents = totals.totalCents - discount;
++  return { ...totals, totalCents };
++}
++
+ // Invoice numbers are sequential and zero padded: INV-0001,
+ // INV-0002, ...
+ export function invoiceNumber(sequence: number): string {
+diff --git a/app/src/http/invoice-routes.ts b/app/src/http/invoice-routes.ts
+index 86cd05d..430486f 100644
+--- a/app/src/http/invoice-routes.ts
++++ b/app/src/http/invoice-routes.ts
+@@ -15,6 +15,7 @@ import {
+ } from '../db/invoices.ts';
+ import { invoicesToCsv } from '../domain/csv.ts';
+ import {
++  applyDiscount,
+   dueDateFor,
+   invoiceTotals,
+   validateLines,
+@@ -116,7 +117,12 @@ function addInvoice(
+     clientId?: unknown;
+     lines?: unknown;
+     taxRateBps?: unknown;
++    discount?: unknown;
+   };
++  const discountCents =
++    input.discount === undefined
++      ? 0
++      : parseCents(String(input.discount));
+   const clientId = Number(input.clientId);
+   if (!getClient(db, clientId))
+     throw new HttpError(
+@@ -143,7 +149,10 @@ function addInvoice(
+   return ok(
+     {
+       ...invoice,
+-      ...invoiceTotals(invoice.lines, invoice.taxRateBps),
++      ...applyDiscount(
++        invoiceTotals(invoice.lines, invoice.taxRateBps),
++        discountCents,
++      ),
+     },
+     201,
+   );
+diff --git a/app/test/invoice.test.ts b/app/test/invoice.test.ts
+index e73cb94..d30c333 100644
+--- a/app/test/invoice.test.ts
++++ b/app/test/invoice.test.ts
+@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
+ import { test } from 'node:test';
+ import { DEFAULT_TAX_RATE_BPS } from '../src/config.ts';
+ import {
++  applyDiscount,
+   dueDateFor,
+   invoiceNumber,
+   invoiceTotals,
+@@ -95,3 +96,13 @@ test('due date uses the default payment terms', () => {
+ test('invoice numbers are zero padded', () => {
+   assert.equal(invoiceNumber(7), 'INV-0007');
+ });
++
++test('a discount never takes the total below zero', () => {
++  const totals = {
++    subtotalCents: 1000,
++    taxCents: 200,
++    totalCents: 1200,
++  };
++  assert.equal(applyDiscount(totals, 200).totalCents, 1000);
++  assert.equal(applyDiscount(totals, 5000).totalCents, 0);
++});

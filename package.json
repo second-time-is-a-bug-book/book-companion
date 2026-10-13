@@ -1,0 +1,28 @@
+{
+  "name": "second-time-is-a-bug-companion",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Companion code for the book The Second Time Is a Bug: Invoicer, guards, drills, templates and a toy agent.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning app/src/main.ts",
+    "test": "node --disable-warning=ExperimentalWarning --test --test-reporter=spec \"app/test/**/*.test.ts\" \"legacy/characterisation/**/*.test.ts\" \"guards/test/**/*.test.ts\" \"toy-agent/test/**/*.test.ts\" \"experiment/test/**/*.test.ts\"",
+    "typecheck": "tsc --noEmit -p .",
+    "gate": "node guards/gate.ts",
+    "evidence": "node guards/done-check.ts --record",
+    "e2e": "playwright test",
+    "drill": "node drills/run.ts",
+    "drills": "node drills/run.ts --all",
+    "drills:docs": "node drills/write-drills-md.ts"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1",
+    "@types/node": "22.20.4",
+    "axe-core": "4.11.4",
+    "typescript": "7.0.2"
+  }
+}

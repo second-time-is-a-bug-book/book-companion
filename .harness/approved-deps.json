@@ -1,0 +1,6 @@
+{
+  "@playwright/test": "dev: browser tests for D13 and D14 (Chapter 7)",
+  "@types/node": "dev: types for node: modules, used by tsc --noEmit",
+  "axe-core": "dev: accessibility rules for the D14 browser test",
+  "typescript": "dev: type checking only (tsc --noEmit); Node runs .ts directly"
+}

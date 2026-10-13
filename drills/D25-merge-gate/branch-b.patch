@@ -1,0 +1,55 @@
+diff --git a/app/src/domain/reminders.ts b/app/src/domain/reminders.ts
+index b2a8479..8e06fa7 100644
+--- a/app/src/domain/reminders.ts
++++ b/app/src/domain/reminders.ts
+@@ -7,6 +7,7 @@ import {
+   daysOverdue,
+   isOverdue,
+ } from './due-dates.ts';
++import { formatCents } from './money.ts';
+ 
+ export interface ReminderCandidate {
+   id: number;
+@@ -45,3 +46,14 @@ export function dueReminders(
+       daysOverdue: daysOverdue(inv.dueDate, today),
+     }));
+ }
++
++// The one-line text of a reminder email.
++export function reminderText(
++  reminder: Reminder,
++  totalCents: number,
++): string {
++  const total = formatCents(totalCents);
++  const days = reminder.daysOverdue;
++  return `Invoice ${reminder.invoiceNumber} for ${total} is ` +
++    `${days} days overdue.`;
++}
+diff --git a/app/test/reminders.test.ts b/app/test/reminders.test.ts
+index 1867c57..3092212 100644
+--- a/app/test/reminders.test.ts
++++ b/app/test/reminders.test.ts
+@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
+ import { test } from 'node:test';
+ import {
+   dueReminders,
++  reminderText,
+   type ReminderCandidate,
+ } from '../src/domain/reminders.ts';
+ 
+@@ -35,3 +36,15 @@ test('no second reminder within the reminder interval', () => {
+     1,
+   ); // 7 days later
+ });
++
++test('reminderText names invoice, total and days', () => {
++  const reminder = {
++    invoiceId: 1,
++    invoiceNumber: 'INV-0001',
++    daysOverdue: 3,
++  };
++  assert.equal(
++    reminderText(reminder, 112470),
++    'Invoice INV-0001 for 1124.70 is 3 days overdue.',
++  );
++});

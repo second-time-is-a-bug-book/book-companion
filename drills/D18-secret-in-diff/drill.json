@@ -1,0 +1,22 @@
+{
+  "id": "D18",
+  "title": "Secret in diff",
+  "chapter": 8,
+  "card": "P22",
+  "mistake": "The agent adds an email sender with the mail provider's live API key pasted into the source.",
+  "files": [
+    "guards/secret-scan.ts"
+  ],
+  "patch": "mistake.patch",
+  "guard": "node guards/secret-scan.ts",
+  "expect": {
+    "before": {
+      "exit": 0,
+      "output": "secret-scan: ok"
+    },
+    "after": {
+      "exit": 1,
+      "output": "looks like a live API key"
+    }
+  }
+}

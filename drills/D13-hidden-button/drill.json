@@ -1,0 +1,24 @@
+{
+  "id": "D13",
+  "title": "Hidden button",
+  "chapter": 7,
+  "card": "P18",
+  "mistake": "The agent adds hover-only row actions to the shared stylesheet using the class name .actions, which the invoice form already uses for its Send invoice button.",
+  "files": [
+    "app/src/ui/public/styles.css",
+    "app/src/ui/public/index.html",
+    "app/e2e/send-invoice.spec.ts"
+  ],
+  "patch": "mistake.patch",
+  "guard": "npx --no-install playwright test app/e2e/send-invoice.spec.ts",
+  "expect": {
+    "before": {
+      "exit": 0,
+      "output": "1 passed"
+    },
+    "after": {
+      "exit": 1,
+      "output": "toBeVisible"
+    }
+  }
+}

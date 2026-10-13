@@ -1,0 +1,1 @@
+{ "tool": "bash", "input": { "command": "rm -rf app/src/db" } }

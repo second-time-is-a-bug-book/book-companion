@@ -1,0 +1,24 @@
+{
+  "id": "D10",
+  "title": "Skipped test",
+  "chapter": 6,
+  "card": "P14",
+  "mistake": "The agent marks one failing test with test.skip and focuses another with test.only.",
+  "files": [
+    "app/test/invoice.test.ts",
+    "app/test/csv.test.ts",
+    "guards/no-skip.ts"
+  ],
+  "patch": "mistake.patch",
+  "guard": "node guards/no-skip.ts",
+  "expect": {
+    "before": {
+      "exit": 0,
+      "output": "no-skip: ok"
+    },
+    "after": {
+      "exit": 1,
+      "output": "a skipped test never runs, so it can never fail"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "D22",
+  "title": "Legacy refactor",
+  "chapter": 10,
+  "card": "P27",
+  "mistake": "The agent \"cleans up\" legacy/billing-export.js and rounds tax once per invoice instead of once per line, changing totals customers reconcile against.",
+  "files": [
+    "legacy/billing-export.js",
+    "legacy/characterisation/billing-export.test.ts",
+    "legacy/characterisation/fixtures/"
+  ],
+  "patch": "mistake.patch",
+  "guard": "node --test --test-reporter=spec \"legacy/characterisation/**/*.test.ts\"",
+  "highlight": [
+    "round",
+    "per line"
+  ],
+  "expect": {
+    "before": {
+      "exit": 0,
+      "output": "pass 3"
+    },
+    "after": {
+      "exit": 1,
+      "output": "fail 2"
+    }
+  }
+}

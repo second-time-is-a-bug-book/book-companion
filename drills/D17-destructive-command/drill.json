@@ -1,0 +1,26 @@
+{
+  "id": "D17",
+  "title": "Destructive command",
+  "chapter": 8,
+  "card": "P21",
+  "mistake": "The agent proposes rm -rf app/src/db to \"start the schema from scratch\".",
+  "files": [
+    "guards/destructive-command.ts",
+    "drills/D17-destructive-command/calls/",
+    "templates/hooks/"
+  ],
+  "patch": null,
+  "guard": null,
+  "before": "node guards/destructive-command.ts < drills/D17-destructive-command/calls/safe.json",
+  "after": "node guards/destructive-command.ts < drills/D17-destructive-command/calls/rm-rf.json",
+  "expect": {
+    "before": {
+      "exit": 0,
+      "output": "destructive-command: ok"
+    },
+    "after": {
+      "exit": 2,
+      "output": "BLOCKED (rm -rf)"
+    }
+  }
+}

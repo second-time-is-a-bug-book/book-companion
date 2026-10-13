@@ -1,0 +1,38 @@
+{
+  "_note": "Scripted turns for toy-agent/loop.ts. The model reads, tests, fixes, tests again, then stops.",
+  "turns": [
+    {
+      "say": "I will read the late fee code first.",
+      "tool": "read_file",
+      "input": {
+        "path": "late-fee.ts"
+      },
+      "tokens": 1800
+    },
+    {
+      "say": "Now I will run the tests to see what fails.",
+      "tool": "run_tests",
+      "input": {},
+      "tokens": 1200
+    },
+    {
+      "say": "Day 7 should still be inside the grace period, so the check must be <=, not <.",
+      "tool": "write_file",
+      "input": {
+        "path": "late-fee.ts",
+        "content": "// Fix the late fee: an invoice gets a 7-day\n// grace period; after that the fee is 2% of the\n// amount, rounded half up to a cent.\nexport const GRACE_DAYS = 7;\n\nexport function lateFeeCents(\n  amountCents: number,\n  daysOverdue: number,\n): number {\n  if (daysOverdue <= GRACE_DAYS) return 0;\n  return Math.floor((amountCents * 200 + 5000) / 10000);\n}\n"
+      },
+      "tokens": 2600
+    },
+    {
+      "say": "Running the tests again to check the fix.",
+      "tool": "run_tests",
+      "input": {},
+      "tokens": 1100
+    },
+    {
+      "say": "All 4 tests pass. The grace period now includes day 7. Done.",
+      "tokens": 600
+    }
+  ]
+}

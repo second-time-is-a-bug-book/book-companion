@@ -1,0 +1,11 @@
+#!/bin/sh
+# Pre-commit hook: run the gate and refuse the commit if it
+# fails. Install:
+#   cp templates/hooks/pre-commit .git/hooks/pre-commit
+#   chmod +x .git/hooks/pre-commit
+# The gate compares your working tree with HEAD, so it sees what
+# you are about to commit plus anything not yet staged. Commit
+# everything you mean to ship.
+# Bypassing with --no-verify should be rare and explained in the
+# commit message.
+exec node guards/gate.ts

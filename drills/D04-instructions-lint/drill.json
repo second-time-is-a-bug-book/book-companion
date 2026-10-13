@@ -1,0 +1,23 @@
+{
+  "id": "D04",
+  "title": "Instructions lint",
+  "chapter": 3,
+  "card": "P03",
+  "mistake": "The agent appends a \"Lessons learned\" section to AGENTS.md: past the line budget, pointing to a file that does not exist, and adding a rule with no check.",
+  "files": [
+    "AGENTS.md",
+    "guards/instructions-lint.ts"
+  ],
+  "patch": "mistake.patch",
+  "guard": "node guards/instructions-lint.ts",
+  "expect": {
+    "before": {
+      "exit": 0,
+      "output": "instructions-lint: ok"
+    },
+    "after": {
+      "exit": 1,
+      "output": "the budget is 100"
+    }
+  }
+}

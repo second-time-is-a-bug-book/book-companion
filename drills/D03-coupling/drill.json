@@ -1,0 +1,26 @@
+{
+  "id": "D03",
+  "title": "Coupling",
+  "chapter": 3,
+  "card": "P04",
+  "mistake": "The agent changes the default tax rate in app/src/config.ts but not the fixture and the docs that mirror it.",
+  "files": [
+    "app/src/config.ts",
+    "app/test/fixtures/pricing.json",
+    "app/docs/pricing.md",
+    "AGENTS.md",
+    "guards/coupling-check.ts"
+  ],
+  "patch": "mistake.patch",
+  "guard": "node guards/coupling-check.ts",
+  "expect": {
+    "before": {
+      "exit": 0,
+      "output": "coupling-check: ok"
+    },
+    "after": {
+      "exit": 1,
+      "output": "app/test/fixtures/pricing.json and app/docs/pricing.md did not"
+    }
+  }
+}

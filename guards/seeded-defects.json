@@ -1,0 +1,10 @@
+[
+  { "id": "float-money", "patch": "drills/D06-float-money/mistake.patch" },
+  { "id": "ui-imports-db", "patch": "drills/D08-layer-boundary/mistake.patch" },
+  { "id": "deleted-test", "patch": "drills/D09-deleted-test/mistake.patch" },
+  { "id": "skipped-test", "patch": "drills/D10-skipped-test/mistake.patch" },
+  { "id": "secret-in-code", "patch": "drills/D18-secret-in-diff/mistake.patch" },
+  { "id": "no-down-migration", "patch": "drills/D19-irreversible-migration/mistake.patch" },
+  { "id": "unapproved-dependency", "patch": "drills/D21-dependency-drift/mistake.patch" },
+  { "id": "off-by-one-overdue", "patch": "guards/seeded/off-by-one-overdue.patch" }
+]

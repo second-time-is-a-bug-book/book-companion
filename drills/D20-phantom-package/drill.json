@@ -1,0 +1,24 @@
+{
+  "id": "D20",
+  "title": "Phantom package",
+  "chapter": 9,
+  "card": "P24",
+  "mistake": "The agent adds two dependencies: one that does not exist, and one first published two days ago that runs an install script.",
+  "files": [
+    "package.json",
+    "guards/package-check.ts",
+    "guards/fixtures/registry-snapshot.json"
+  ],
+  "patch": "mistake.patch",
+  "guard": "node guards/package-check.ts",
+  "expect": {
+    "before": {
+      "exit": 0,
+      "output": "package-check: ok"
+    },
+    "after": {
+      "exit": 1,
+      "output": "does not exist on the registry"
+    }
+  }
+}

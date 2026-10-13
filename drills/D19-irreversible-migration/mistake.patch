@@ -1,0 +1,9 @@
+diff --git a/app/src/db/migrations/004_drop_client_notes.sql b/app/src/db/migrations/004_drop_client_notes.sql
+new file mode 100644
+index 0000000..f92835b
+--- /dev/null
++++ b/app/src/db/migrations/004_drop_client_notes.sql
+@@ -0,0 +1,3 @@
++-- migrate:up
++-- Client notes are no longer shown anywhere; drop the column.
++ALTER TABLE clients DROP COLUMN notes;

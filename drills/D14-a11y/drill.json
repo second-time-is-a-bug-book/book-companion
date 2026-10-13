@@ -1,0 +1,23 @@
+{
+  "id": "D14",
+  "title": "Accessibility",
+  "chapter": 7,
+  "card": "P18",
+  "mistake": "The agent renames the description input's id for a future multi-line form and leaves its label pointing at the old id.",
+  "files": [
+    "app/src/ui/public/index.html",
+    "app/e2e/accessibility.spec.ts"
+  ],
+  "patch": "mistake.patch",
+  "guard": "npx --no-install playwright test app/e2e/accessibility.spec.ts",
+  "expect": {
+    "before": {
+      "exit": 0,
+      "output": "1 passed"
+    },
+    "after": {
+      "exit": 1,
+      "output": "label: Form elements must have labels"
+    }
+  }
+}

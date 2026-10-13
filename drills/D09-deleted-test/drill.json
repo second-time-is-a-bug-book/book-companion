@@ -1,0 +1,24 @@
+{
+  "id": "D09",
+  "title": "Deleted test",
+  "chapter": 6,
+  "card": "P15",
+  "mistake": "A rounding test fails, so the agent deletes it.",
+  "files": [
+    "app/test/money.test.ts",
+    "guards/test-ratchet.ts",
+    ".harness/test-baseline.json"
+  ],
+  "patch": "mistake.patch",
+  "guard": "node guards/test-ratchet.ts",
+  "expect": {
+    "before": {
+      "exit": 0,
+      "output": "test-ratchet: ok"
+    },
+    "after": {
+      "exit": 1,
+      "output": "The test count fell from"
+    }
+  }
+}

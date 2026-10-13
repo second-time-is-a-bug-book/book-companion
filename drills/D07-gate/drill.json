@@ -1,0 +1,23 @@
+{
+  "id": "D07",
+  "title": "Gate",
+  "chapter": 5,
+  "card": "P12",
+  "mistake": "The agent reads a reminder interval from an environment variable and annotates it as a number; it is a string. Everything else is fine.",
+  "files": [
+    "guards/gate.ts",
+    "app/src/main.ts"
+  ],
+  "patch": "mistake.patch",
+  "guard": "node guards/gate.ts",
+  "expect": {
+    "before": {
+      "exit": 0,
+      "output": "gate: PASSED, 14 of 14 checks ran and passed"
+    },
+    "after": {
+      "exit": 1,
+      "output": "gate: REFUSED, 1 of 14 checks failed: typecheck"
+    }
+  }
+}

@@ -1,0 +1,245 @@
+{
+  "_note": "Scripted turns for drill D24. A model that never finishes; only a budget stops it.",
+  "turns": [
+    {
+      "say": "Still checking the grace period (pass 1).",
+      "tool": "read_file",
+      "input": {
+        "path": "late-fee.ts"
+      },
+      "tokens": 6000
+    },
+    {
+      "say": "Still checking the grace period (pass 2).",
+      "tool": "read_file",
+      "input": {
+        "path": "late-fee.ts"
+      },
+      "tokens": 6000
+    },
+    {
+      "say": "Still checking the grace period (pass 3).",
+      "tool": "read_file",
+      "input": {
+        "path": "late-fee.ts"
+      },
+      "tokens": 6000
+    },
+    {
+      "say": "Still checking the grace period (pass 4).",
+      "tool": "read_file",
+      "input": {
+        "path": "late-fee.ts"
+      },
+      "tokens": 6000
+    },
+    {
+      "say": "Still checking the grace period (pass 5).",
+      "tool": "read_file",
+      "input": {
+        "path": "late-fee.ts"
+      },
+      "tokens": 6000
+    },
+    {
+      "say": "Still checking the grace period (pass 6).",
+      "tool": "read_file",
+      "input": {
+        "path": "late-fee.ts"
+      },
+      "tokens": 6000
+    },
+    {
+      "say": "Still checking the grace period (pass 7).",
+      "tool": "read_file",
+      "input": {
+        "path": "late-fee.ts"
+      },
+      "tokens": 6000
+    },
+    {
+      "say": "Still checking the grace period (pass 8).",
+      "tool": "read_file",
+      "input": {
+        "path": "late-fee.ts"
+      },
+      "tokens": 6000
+    },
+    {
+      "say": "Still checking the grace period (pass 9).",
+      "tool": "read_file",
+      "input": {
+        "path": "late-fee.ts"
+      },
+      "tokens": 6000
+    },
+    {
+      "say": "Still checking the grace period (pass 10).",
+      "tool": "read_file",
+      "input": {
+        "path": "late-fee.ts"
+      },
+      "tokens": 6000
+    },
+    {
+      "say": "Still checking the grace period (pass 11).",
+      "tool": "read_file",
+      "input": {
+        "path": "late-fee.ts"
+      },
+      "tokens": 6000
+    },
+    {
+      "say": "Still checking the grace period (pass 12).",
+      "tool": "read_file",
+      "input": {
+        "path": "late-fee.ts"
+      },
+      "tokens": 6000
+    },
+    {
+      "say": "Still checking the grace period (pass 13).",
+      "tool": "read_file",
+      "input": {
+        "path": "late-fee.ts"
+      },
+      "tokens": 6000
+    },
+    {
+      "say": "Still checking the grace period (pass 14).",
+      "tool": "read_file",
+      "input": {
+        "path": "late-fee.ts"
+      },
+      "tokens": 6000
+    },
+    {
+      "say": "Still checking the grace period (pass 15).",
+      "tool": "read_file",
+      "input": {
+        "path": "late-fee.ts"
+      },
+      "tokens": 6000
+    },
+    {
+      "say": "Still checking the grace period (pass 16).",
+      "tool": "read_file",
+      "input": {
+        "path": "late-fee.ts"
+      },
+      "tokens": 6000
+    },
+    {
+      "say": "Still checking the grace period (pass 17).",
+      "tool": "read_file",
+      "input": {
+        "path": "late-fee.ts"
+      },
+      "tokens": 6000
+    },
+    {
+      "say": "Still checking the grace period (pass 18).",
+      "tool": "read_file",
+      "input": {
+        "path": "late-fee.ts"
+      },
+      "tokens": 6000
+    },
+    {
+      "say": "Still checking the grace period (pass 19).",
+      "tool": "read_file",
+      "input": {
+        "path": "late-fee.ts"
+      },
+      "tokens": 6000
+    },
+    {
+      "say": "Still checking the grace period (pass 20).",
+      "tool": "read_file",
+      "input": {
+        "path": "late-fee.ts"
+      },
+      "tokens": 6000
+    },
+    {
+      "say": "Still checking the grace period (pass 21).",
+      "tool": "read_file",
+      "input": {
+        "path": "late-fee.ts"
+      },
+      "tokens": 6000
+    },
+    {
+      "say": "Still checking the grace period (pass 22).",
+      "tool": "read_file",
+      "input": {
+        "path": "late-fee.ts"
+      },
+      "tokens": 6000
+    },
+    {
+      "say": "Still checking the grace period (pass 23).",
+      "tool": "read_file",
+      "input": {
+        "path": "late-fee.ts"
+      },
+      "tokens": 6000
+    },
+    {
+      "say": "Still checking the grace period (pass 24).",
+      "tool": "read_file",
+      "input": {
+        "path": "late-fee.ts"
+      },
+      "tokens": 6000
+    },
+    {
+      "say": "Still checking the grace period (pass 25).",
+      "tool": "read_file",
+      "input": {
+        "path": "late-fee.ts"
+      },
+      "tokens": 6000
+    },
+    {
+      "say": "Still checking the grace period (pass 26).",
+      "tool": "read_file",
+      "input": {
+        "path": "late-fee.ts"
+      },
+      "tokens": 6000
+    },
+    {
+      "say": "Still checking the grace period (pass 27).",
+      "tool": "read_file",
+      "input": {
+        "path": "late-fee.ts"
+      },
+      "tokens": 6000
+    },
+    {
+      "say": "Still checking the grace period (pass 28).",
+      "tool": "read_file",
+      "input": {
+        "path": "late-fee.ts"
+      },
+      "tokens": 6000
+    },
+    {
+      "say": "Still checking the grace period (pass 29).",
+      "tool": "read_file",
+      "input": {
+        "path": "late-fee.ts"
+      },
+      "tokens": 6000
+    },
+    {
+      "say": "Still checking the grace period (pass 30).",
+      "tool": "read_file",
+      "input": {
+        "path": "late-fee.ts"
+      },
+      "tokens": 6000
+    }
+  ]
+}

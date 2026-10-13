@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+  <title>Invoicer</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main>
+    <h1>Invoicer</h1>
+    <form id="invoice-form">
+      <h2>New invoice</h2>
+
+      <label for="client">Client</label>
+      <select id="client" name="client" required></select>
+
+      <label for="description">Description</label>
+      <input id="description" name="description" required>
+
+      <label for="quantity">Quantity</label>
+      <input id="quantity" name="quantity" type="number"
+             min="1" step="1" value="1" required>
+
+      <label for="unit-price">Unit price</label>
+      <input id="unit-price" name="unitPrice"
+             inputmode="decimal" placeholder="0.00" required>
+
+      <div class="actions">
+        <button type="submit">Send invoice</button>
+      </div>
+      <p id="status" role="status"></p>
+    </form>
+    <p><a href="/invoices">All invoices</a></p>
+  </main>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

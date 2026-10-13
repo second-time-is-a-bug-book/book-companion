@@ -1,0 +1,15 @@
+diff --git a/app/src/http/invoice-routes.ts b/app/src/http/invoice-routes.ts
+index 86cd05d..a72ab1a 100644
+--- a/app/src/http/invoice-routes.ts
++++ b/app/src/http/invoice-routes.ts
+@@ -155,7 +155,9 @@ function toLineItem(line: LineInput): LineItem {
+     return {
+       description: String(line.description ?? ''),
+       quantity: Number(line.quantity),
+-      unitPriceCents: parseCents(price),
++      // Accept any price the form sends, like 12.345,
++      // instead of rejecting it.
++      unitPriceCents: Math.round(parseFloat(price) * 100),
+     };
+   } catch (error) {
+     throw new HttpError(400, (error as Error).message);

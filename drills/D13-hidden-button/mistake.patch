@@ -1,0 +1,17 @@
+diff --git a/app/src/ui/public/styles.css b/app/src/ui/public/styles.css
+index 910fa14..cad233f 100644
+--- a/app/src/ui/public/styles.css
++++ b/app/src/ui/public/styles.css
+@@ -73,3 +73,12 @@ td {
+   text-align: right;
+   font-variant-numeric: tabular-nums;
+ }
++
++/* Row actions on the invoice list: hidden until hovered. */
++.actions {
++  display: none;
++}
++
++tr:hover .actions {
++  display: flex;
++}

@@ -1,0 +1,75 @@
+/* Invoicer: one small stylesheet shared by every page. */
+:root {
+  --ink: #1d2433;
+  --muted: #5b6577;
+  --paper: #ffffff;
+  --accent: #1f5fbf;
+  --line: #d6dbe4;
+}
+
+body {
+  margin: 0;
+  font: 16px/1.5 system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+main {
+  max-width: 40rem;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+form {
+  display: grid;
+  gap: 0.25rem;
+}
+
+label {
+  margin-top: 0.75rem;
+  font-weight: 600;
+}
+
+input,
+select {
+  padding: 0.5rem;
+  font: inherit;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+
+.actions {
+  margin-top: 1.25rem;
+}
+
+button {
+  padding: 0.6rem 1.2rem;
+  font: inherit;
+  color: #fff;
+  background: var(--accent);
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#status {
+  min-height: 1.5rem;
+  color: var(--muted);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 0.4rem;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+}
+
+.amount {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}

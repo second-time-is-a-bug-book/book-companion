@@ -1,0 +1,24 @@
+{
+  "id": "D08",
+  "title": "Layer boundary",
+  "chapter": 5,
+  "card": "P13",
+  "mistake": "The agent adds a dashboard to the ui layer that reads invoices straight from the database module.",
+  "files": [
+    "app/src/ui/pages.ts",
+    "app/src/db/invoices.ts",
+    "guards/layer-boundary.ts"
+  ],
+  "patch": "mistake.patch",
+  "guard": "node guards/layer-boundary.ts",
+  "expect": {
+    "before": {
+      "exit": 0,
+      "output": "layer-boundary: ok"
+    },
+    "after": {
+      "exit": 1,
+      "output": "the ui layer may not import db"
+    }
+  }
+}

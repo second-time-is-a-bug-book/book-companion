@@ -1,0 +1,27 @@
+{
+  "id": "D25",
+  "title": "Merge gate",
+  "chapter": 11,
+  "card": "P29",
+  "mistake": "Two agents in two worktrees: one renames formatCents() to formatMoney(), the other adds a new call to formatCents(). Each branch passes alone.",
+  "files": [
+    "drills/D25-merge-gate/simulate.ts",
+    "drills/D25-merge-gate/branch-a.patch",
+    "drills/D25-merge-gate/branch-b.patch",
+    "guards/gate.ts"
+  ],
+  "patch": null,
+  "guard": null,
+  "before": "node drills/D25-merge-gate/simulate.ts --each",
+  "after": "node drills/D25-merge-gate/simulate.ts --merged",
+  "expect": {
+    "before": {
+      "exit": 0,
+      "output": "gate: PASSED"
+    },
+    "after": {
+      "exit": 1,
+      "output": "gate: REFUSED, 3 of 14 checks failed: typecheck, unit-tests, test-ratchet"
+    }
+  }
+}
