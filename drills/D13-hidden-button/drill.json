@@ -11,6 +11,7 @@
   ],
   "patch": "mistake.patch",
   "guard": "npx --no-install playwright test app/e2e/send-invoice.spec.ts",
+  "needs": "chromium",
   "expect": {
     "before": {
       "exit": 0,

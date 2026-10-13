@@ -35,10 +35,19 @@ npm test               # unit tests and the legacy golden master
 npm run typecheck      # tsc --noEmit
 npm run gate           # every guard, fast ones first; refuses on any failure
 npm run drill D06      # one drill: the float-money guard catches a parseFloat
+npx playwright install chromium   # once, for drills D13 and D14
 npm run drills         # all 26 drills and a summary table (a few minutes)
 npm run e2e            # browser and accessibility tests
 npm start -- --seed-demo   # Invoicer on http://127.0.0.1:3000 with a demo client
 ```
+
+Without Playwright's Chromium, `npm run drills` does not run D13 and D14. It says
+so and ends with exit code 1, because the run is not complete:
+
+    24 of 26 drills behaved as expected; 2 need Chromium (npx playwright install chromium).
+
+Install Chromium and run it again. The runner's own tests, which are not part of
+`npm test`: `node --test drills/test/*.test.ts`.
 
 `npm run gate` compares your working tree with `HEAD`. Outside a git repository the
 diff-based guards report "skipped" rather than guessing. In CI, set

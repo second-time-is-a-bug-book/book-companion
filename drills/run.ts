@@ -8,12 +8,20 @@
 //   npm run drill D06   one drill, full output
 //   npm run drills      all drills, then a summary table (exit 0
 //                       only if all behave)
+// D13 and D14 need Playwright's Chromium. Without it they are
+// not run: the runner says how to install it, and the run
+// exits 1, because a run that skipped drills is not complete.
 import {
   readdirSync,
   readFileSync,
   writeFileSync,
 } from 'node:fs';
 import * as scratch from '../guards/lib/scratch.ts';
+import {
+  hasChromium,
+  needsChromium,
+  summary,
+} from './lib/browser.ts';
 import { sh } from '../guards/lib/shell.ts';
 import { wrap } from '../guards/lib/wrap.ts';
 
@@ -37,6 +45,7 @@ export interface Drill {
   after?: string;
   setup?: string; // run once in the scratch copy, first
   highlight?: string[]; // DRILLS.md shows patch lines with these
+  needs?: 'chromium'; // a browser drill (Playwright)
   expect: { before: Expectation; after: Expectation };
 }
 
@@ -147,36 +156,49 @@ if (process.argv[1] === import.meta.filename) {
     process.exit(1);
   }
   const rows: string[] = [];
+  const row = (d: Drill, exits: string, verdict: string) => {
+    const ch = String(d.chapter).padStart(3);
+    const name = `${d.id}  ${d.title.padEnd(26)}${ch}`;
+    return `${name}  ${d.card}   ${exits}  ${verdict}`;
+  };
   const record: Record<string, unknown> = {};
   let failures = 0;
+  let noBrowser = 0; // drills not run: no Chromium
+  const browser =
+    !drills.some(({ drill }) => drill.needs === 'chromium') ||
+    (await hasChromium());
   for (const { folder, drill } of drills) {
     if (all)
       process.stdout.write(
         `running ${drill.id} ${drill.title} ... `,
       );
+    if (drill.needs === 'chromium' && !browser) {
+      if (all) console.log('needs Chromium');
+      console.log(needsChromium(drill.id));
+      noBrowser += 1;
+      record[drill.id] = { ran: false, needs: 'chromium' };
+      const notRun = 'not run'.padEnd(14);
+      rows.push(row(drill, notRun, 'needs Chromium'));
+      continue;
+    }
     const result = runDrill(folder, drill, !all);
     const verdict = result.ok ? 'ok' : 'NOT AS EXPECTED';
     if (all) console.log(verdict);
     if (!result.ok) failures += 1;
     record[drill.id] = result;
-    const { id, title, chapter, card } = drill;
-    const exits = `exit ${result.before.exit}  exit ${result.after.exit}`;
-    const ch = String(chapter).padStart(3);
-    rows.push(
-      `${id}  ${title.padEnd(26)}${ch}  ${card}   ${exits}  ${verdict}`,
-    );
+    const { before, after } = result;
+    const exits = `exit ${before.exit}  exit ${after.exit}`;
+    rows.push(row(drill, exits, verdict));
   }
   const head = `ID   ${'Title'.padEnd(26)} Ch  Card  Before  After   Result`;
   console.log(`\n${head}\n${rows.join('\n')}`);
-  const good = drills.length - failures;
-  console.log(
-    `\n${good} of ${drills.length} drills behaved as expected.`,
-  );
+  const good = drills.length - failures - noBrowser;
+  console.log(`\n${summary(drills.length, good, noBrowser)}`);
   const flag = args.find((arg) => arg.startsWith('--record='));
   if (flag)
     writeFileSync(
       flag.slice('--record='.length),
       JSON.stringify(record, null, 2),
     );
-  process.exitCode = failures === 0 ? 0 : 1;
+  process.exitCode = failures + noBrowser === 0 ? 0 : 1;
 }

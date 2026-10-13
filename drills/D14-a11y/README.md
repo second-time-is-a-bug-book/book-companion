@@ -10,6 +10,9 @@ The agent renames the description input's id for a future multi-line form and le
 
     npm run drill D14
 
+This drill runs a browser test, so it needs Playwright's Chromium. Install it once with
+`npx playwright install chromium`. Without it the runner says so and does not run the drill.
+
 The runner copies the repository to a scratch folder, runs `npx --no-install playwright test app/e2e/accessibility.spec.ts` (it should pass),
 applies `drills/D14-a11y/mistake.patch`, runs the guard again (it should fail), prints both
 outputs and deletes the scratch copy. Your working tree is never changed.

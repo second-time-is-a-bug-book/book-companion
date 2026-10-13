@@ -6,6 +6,7 @@
 import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { listFiles } from '../guards/lib/files.ts';
+import { hasChromium, needsChromium } from './lib/browser.ts';
 import { loadDrills, runDrill, type Drill, type PhaseResult } from './run.ts';
 
 const fence = (text: string, lang = 'text') => `\`\`\`${lang}\n${text.trimEnd()}\n\`\`\``;
@@ -67,6 +68,12 @@ function section(folder: string, drill: Drill, before: PhaseResult, after: Phase
 }
 
 const drills = loadDrills();
+// DRILLS.md needs every drill's real output, so it cannot skip the browser drills.
+const browserDrills = drills.filter(({ drill }) => drill.needs === 'chromium');
+if (browserDrills.length > 0 && !(await hasChromium())) {
+  for (const { drill } of browserDrills) console.log(needsChromium(drill.id));
+  process.exit(1);
+}
 const sections: string[] = [];
 const rows: string[] = [];
 for (const { folder, drill } of drills) {
@@ -117,5 +124,5 @@ ${sections.join('\n\n')}
 writeFileSync('DRILLS.md', doc);
 console.log(`wrote DRILLS.md (${drills.length} drills, ${codeFiles.length} files listed)`);
 // Folders that are not drills are ignored by loadDrills(); list them so nothing is forgotten.
-const strays = readdirSync('drills').filter((d) => !/^D\d\d-/.test(d) && !d.endsWith('.ts'));
+const strays = readdirSync('drills').filter((d) => !/^D\d\d-/.test(d) && !d.endsWith('.ts') && !['lib', 'test'].includes(d));
 if (strays.length > 0) console.log(`note: not drills: ${strays.join(', ')}`);
