@@ -31,6 +31,7 @@ Node 22.18 or later, no build step.
 | `templates/` | Starters to copy into your own repository |
 | `experiment/` | A kit to measure whether the harness pays |
 | `plans/` | Plan and handoff files for larger changes |
+| `docs/` | Current tool wiring and full-size book figures |
 
 ## Commands
 

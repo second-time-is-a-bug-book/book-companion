@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 286">
+  <title>Seeded defects against gate checks</title>
+  <desc>A grid of the nine seeded defects from drill D16 against the fourteen gate checks in run order. Each of the first eight defects is caught by one or two checks: float-money by no-float-money and unit-tests, no-down-migration by coupling-check and migration-guard, the others by one check each. The ninth, hidden-button, is caught by none and escapes. Five checks catch none of these defects.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#14171f"/>
+    </marker>
+    <marker id="arrow-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5b616e"/>
+    </marker>
+    <marker id="arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b8322a"/>
+    </marker>
+  </defs>
+  <text x="157" y="96" font-family="BookMono, 'JetBrains Mono', monospace" font-size="10.5" fill="#1c1f26" style="font-variant-ligatures:none" transform="rotate(-55 157 96)">instructions-lint</text>
+  <text x="174" y="96" font-family="BookMono, 'JetBrains Mono', monospace" font-size="10.5" fill="#1c1f26" style="font-variant-ligatures:none" transform="rotate(-55 174 96)">coupling-check</text>
+  <text x="191" y="96" font-family="BookMono, 'JetBrains Mono', monospace" font-size="10.5" fill="#1c1f26" style="font-variant-ligatures:none" transform="rotate(-55 191 96)">plan-required</text>
+  <text x="208" y="96" font-family="BookMono, 'JetBrains Mono', monospace" font-size="10.5" fill="#1c1f26" style="font-variant-ligatures:none" transform="rotate(-55 208 96)">diff-budget</text>
+  <text x="225" y="96" font-family="BookMono, 'JetBrains Mono', monospace" font-size="10.5" fill="#1c1f26" style="font-variant-ligatures:none" transform="rotate(-55 225 96)">no-float-money</text>
+  <text x="242" y="96" font-family="BookMono, 'JetBrains Mono', monospace" font-size="10.5" fill="#1c1f26" style="font-variant-ligatures:none" transform="rotate(-55 242 96)">layer-boundary</text>
+  <text x="259" y="96" font-family="BookMono, 'JetBrains Mono', monospace" font-size="10.5" fill="#1c1f26" style="font-variant-ligatures:none" transform="rotate(-55 259 96)">no-skip</text>
+  <text x="276" y="96" font-family="BookMono, 'JetBrains Mono', monospace" font-size="10.5" fill="#1c1f26" style="font-variant-ligatures:none" transform="rotate(-55 276 96)">secret-scan</text>
+  <text x="293" y="96" font-family="BookMono, 'JetBrains Mono', monospace" font-size="10.5" fill="#1c1f26" style="font-variant-ligatures:none" transform="rotate(-55 293 96)">migration-guard</text>
+  <text x="310" y="96" font-family="BookMono, 'JetBrains Mono', monospace" font-size="10.5" fill="#1c1f26" style="font-variant-ligatures:none" transform="rotate(-55 310 96)">dependency-diff</text>
+  <text x="327" y="96" font-family="BookMono, 'JetBrains Mono', monospace" font-size="10.5" fill="#1c1f26" style="font-variant-ligatures:none" transform="rotate(-55 327 96)">package-check</text>
+  <text x="349" y="96" font-family="BookMono, 'JetBrains Mono', monospace" font-size="10.5" fill="#1c1f26" style="font-variant-ligatures:none" transform="rotate(-55 349 96)">typecheck</text>
+  <text x="366" y="96" font-family="BookMono, 'JetBrains Mono', monospace" font-size="10.5" fill="#1c1f26" style="font-variant-ligatures:none" transform="rotate(-55 366 96)">unit-tests</text>
+  <text x="383" y="96" font-family="BookMono, 'JetBrains Mono', monospace" font-size="10.5" fill="#1c1f26" style="font-variant-ligatures:none" transform="rotate(-55 383 96)">test-ratchet</text>
+  <line x1="335.0" y1="102" x2="335.0" y2="259" stroke="#c9ccd3" stroke-width="1" stroke-dasharray="2 2"/>
+  <text x="10" y="116.5" font-family="BookMono, 'JetBrains Mono', monospace" font-size="10.5" fill="#1c1f26" style="font-variant-ligatures:none">float-money</text>
+  <circle cx="154" cy="112.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="171" cy="112.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="188" cy="112.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="205" cy="112.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="222" cy="112.5" r="5" fill="#14171f"/>
+  <circle cx="239" cy="112.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="256" cy="112.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="273" cy="112.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="290" cy="112.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="307" cy="112.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="324" cy="112.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="346" cy="112.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="363" cy="112.5" r="5" fill="#14171f"/>
+  <circle cx="380" cy="112.5" r="1.6" fill="#c9ccd3"/>
+  <text x="10" y="133.5" font-family="BookMono, 'JetBrains Mono', monospace" font-size="10.5" fill="#1c1f26" style="font-variant-ligatures:none">ui-imports-db</text>
+  <circle cx="154" cy="129.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="171" cy="129.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="188" cy="129.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="205" cy="129.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="222" cy="129.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="239" cy="129.5" r="5" fill="#14171f"/>
+  <circle cx="256" cy="129.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="273" cy="129.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="290" cy="129.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="307" cy="129.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="324" cy="129.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="346" cy="129.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="363" cy="129.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="380" cy="129.5" r="1.6" fill="#c9ccd3"/>
+  <text x="10" y="150.5" font-family="BookMono, 'JetBrains Mono', monospace" font-size="10.5" fill="#1c1f26" style="font-variant-ligatures:none">deleted-test</text>
+  <circle cx="154" cy="146.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="171" cy="146.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="188" cy="146.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="205" cy="146.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="222" cy="146.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="239" cy="146.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="256" cy="146.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="273" cy="146.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="290" cy="146.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="307" cy="146.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="324" cy="146.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="346" cy="146.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="363" cy="146.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="380" cy="146.5" r="5" fill="#14171f"/>
+  <text x="10" y="167.5" font-family="BookMono, 'JetBrains Mono', monospace" font-size="10.5" fill="#1c1f26" style="font-variant-ligatures:none">skipped-test</text>
+  <circle cx="154" cy="163.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="171" cy="163.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="188" cy="163.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="205" cy="163.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="222" cy="163.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="239" cy="163.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="256" cy="163.5" r="5" fill="#14171f"/>
+  <circle cx="273" cy="163.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="290" cy="163.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="307" cy="163.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="324" cy="163.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="346" cy="163.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="363" cy="163.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="380" cy="163.5" r="1.6" fill="#c9ccd3"/>
+  <text x="10" y="184.5" font-family="BookMono, 'JetBrains Mono', monospace" font-size="10.5" fill="#1c1f26" style="font-variant-ligatures:none">secret-in-code</text>
+  <circle cx="154" cy="180.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="171" cy="180.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="188" cy="180.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="205" cy="180.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="222" cy="180.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="239" cy="180.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="256" cy="180.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="273" cy="180.5" r="5" fill="#14171f"/>
+  <circle cx="290" cy="180.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="307" cy="180.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="324" cy="180.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="346" cy="180.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="363" cy="180.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="380" cy="180.5" r="1.6" fill="#c9ccd3"/>
+  <text x="10" y="201.5" font-family="BookMono, 'JetBrains Mono', monospace" font-size="10.5" fill="#1c1f26" style="font-variant-ligatures:none">no-down-migration</text>
+  <circle cx="154" cy="197.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="171" cy="197.5" r="5" fill="#14171f"/>
+  <circle cx="188" cy="197.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="205" cy="197.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="222" cy="197.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="239" cy="197.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="256" cy="197.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="273" cy="197.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="290" cy="197.5" r="5" fill="#14171f"/>
+  <circle cx="307" cy="197.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="324" cy="197.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="346" cy="197.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="363" cy="197.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="380" cy="197.5" r="1.6" fill="#c9ccd3"/>
+  <text x="10" y="218.5" font-family="BookMono, 'JetBrains Mono', monospace" font-size="10.5" fill="#1c1f26" style="font-variant-ligatures:none">unapproved-dependency</text>
+  <circle cx="154" cy="214.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="171" cy="214.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="188" cy="214.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="205" cy="214.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="222" cy="214.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="239" cy="214.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="256" cy="214.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="273" cy="214.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="290" cy="214.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="307" cy="214.5" r="5" fill="#14171f"/>
+  <circle cx="324" cy="214.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="346" cy="214.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="363" cy="214.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="380" cy="214.5" r="1.6" fill="#c9ccd3"/>
+  <text x="10" y="235.5" font-family="BookMono, 'JetBrains Mono', monospace" font-size="10.5" fill="#1c1f26" style="font-variant-ligatures:none">off-by-one-overdue</text>
+  <circle cx="154" cy="231.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="171" cy="231.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="188" cy="231.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="205" cy="231.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="222" cy="231.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="239" cy="231.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="256" cy="231.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="273" cy="231.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="290" cy="231.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="307" cy="231.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="324" cy="231.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="346" cy="231.5" r="1.6" fill="#c9ccd3"/>
+  <circle cx="363" cy="231.5" r="5" fill="#14171f"/>
+  <circle cx="380" cy="231.5" r="1.6" fill="#c9ccd3"/>
+  <rect x="4" y="241.0" width="432" height="15" rx="3" fill="#fbf3f0" stroke="none" stroke-width="1.25"/>
+  <text x="10" y="252.5" font-family="BookMono, 'JetBrains Mono', monospace" font-size="10.5" fill="#14171f" font-weight="600" style="font-variant-ligatures:none">hidden-button</text>
+  <text x="150" y="252.5" font-family="BookMono, 'JetBrains Mono', monospace" font-size="10.5" fill="#b8322a" font-weight="600" style="font-variant-ligatures:none">ESCAPED: no check caught it</text>
+  <circle cx="15" cy="273" r="5" fill="#14171f"/>
+  <text x="25" y="277" font-family="BookSans, Inter, sans-serif" font-size="10.5" fill="#5b616e">caught: the check failed</text>
+  <text x="239.0" y="277" font-family="BookSans, Inter, sans-serif" font-size="10.5" fill="#5b616e" text-anchor="middle">fast checks</text>
+  <text x="363.0" y="277" font-family="BookSans, Inter, sans-serif" font-size="10.5" fill="#5b616e" text-anchor="middle">slow</text>
+</svg>
