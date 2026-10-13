@@ -6,7 +6,7 @@
 // Kind: sensor, computational.
 // Retire when: the coupled values are generated from one
 // source, so they can no longer drift.
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { changedFiles, skipUnlessGit } from './lib/git.ts';
 import { isMain, report } from './lib/log.ts';
 
@@ -72,18 +72,32 @@ export function checkCoupling(
   return problems;
 }
 
-const main = isMain(import.meta.url);
-if (main && !skipUnlessGit('coupling-check')) {
-  const source = process.argv[2] ?? 'AGENTS.md';
+// No coupling list means nothing to check: say so, and pass.
+// The gate shows this as "skipped", not "ok".
+export function readCouplings(
+  source: string,
+): Coupling[] | null {
+  if (!existsSync(source)) return null;
   const text = readFileSync(source, 'utf8');
-  const couplings = source.endsWith('.json')
+  return source.endsWith('.json')
     ? (JSON.parse(text) as Coupling[])
     : parseCouplings(text);
-  const changed = changedFiles();
-  const ok = `${couplings.length} couplings`;
-  report(
-    'coupling-check',
-    checkCoupling(couplings, changed),
-    `${ok}, ${changed.length} changed files`,
-  );
+}
+
+if (isMain(import.meta.url)) {
+  const source = process.argv[2] ?? 'AGENTS.md';
+  const couplings = readCouplings(source);
+  if (couplings === null) {
+    console.log(
+      `coupling-check: skipped (no ${source} to read)`,
+    );
+  } else if (!skipUnlessGit('coupling-check')) {
+    const changed = changedFiles();
+    const ok = `${couplings.length} couplings`;
+    report(
+      'coupling-check',
+      checkCoupling(couplings, changed),
+      `${ok}, ${changed.length} changed files`,
+    );
+  }
 }

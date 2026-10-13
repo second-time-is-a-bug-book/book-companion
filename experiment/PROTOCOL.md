@@ -47,21 +47,27 @@ They fail on the code as shipped and pass on a correct implementation.
 | `gates` | as `rules`, plus the pre-commit gate and the destructive-command hook | `Follow the rules in AGENTS.md. Run npm run gate and npm run evidence before you say you are done.` |
 
 The rest of the repository, guards and README included, is the same in every
-condition. Give every run its own folder, made from the same commit, with no git
+condition, except `docs/`, which is removed in every condition because it
+describes the guards and hooks. Give every run its own folder, made from the same commit, with no git
 history (a clone's history still holds the acceptance tests):
 
 ```sh
 run=../runs/t1-gates-01                              # one folder per run
 mkdir -p "$run" && git archive HEAD | tar -x -C "$run" && cd "$run"
-rm -r experiment/tasks experiment/PROTOCOL.md          # every condition
+rm -r experiment/tasks experiment/PROTOCOL.md docs     # every condition
 rm -r AGENTS.md templates                              # none only
 git init -q && git add -A && git commit -qm "start"    # a clean tree to start from
 cp templates/hooks/pre-commit .git/hooks/pre-commit    # gates only
 npm ci && npm test                                     # must pass before the agent starts
+npm run gate                                           # must pass too, in every condition
 ```
 
 For `gates`, also wire `templates/hooks/agent-pre-action.sh` into your agent
-(see `templates/hooks/README.md`) and check that `npm run gate` passes.
+(see `templates/hooks/README.md`).
+
+`npm run gate` passes in a clean copy of all three conditions. In `none` it
+reports `coupling-check` as skipped, because there is no `AGENTS.md` to read
+the coupling list from; it does not fail.
 
 Delete `experiment/tasks/` (the acceptance tests and task texts) and this file,
 not the whole of `experiment/`: the scorer's tests in `experiment/test/` run in

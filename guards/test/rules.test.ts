@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
 import { test } from 'node:test';
-import { checkCoupling, parseCouplings } from '../coupling-check.ts';
+import { checkCoupling, parseCouplings, readCouplings } from '../coupling-check.ts';
 import { checkBudget } from '../diff-budget.ts';
 import { lintInstructions } from '../instructions-lint.ts';
 import { checkMigration } from '../migration-guard.ts';
@@ -23,6 +23,8 @@ test('coupling fails only when X changed without Y', () => {
   assert.equal(checkCoupling(rows, ['a.ts']).length, 1);
   assert.equal(checkCoupling(rows, ['a.ts', 'b.md', 'docs/x.md']).length, 0);
   assert.equal(checkCoupling(rows, ['b.md']).length, 0);
+  // No coupling list (the experiment's "none" condition): skip.
+  assert.equal(readCouplings('no-such-AGENTS.md'), null);
 });
 
 test('instructions-lint: budget, dead paths, unknown scripts, rules without checks', () => {
