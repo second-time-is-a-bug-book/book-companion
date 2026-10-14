@@ -14,6 +14,8 @@ engineering with AI coding agents*. Everything the book shows runs here:
 
 TypeScript on Node, with zero runtime dependencies and no build step.
 
+Book website: <https://secondtimeisabug.com>
+
 The code the book quotes, and the messages the guards and drills
 print, are kept within 64 columns, the width of the book's printed
 page. Guard output wraps with a hanging indent
