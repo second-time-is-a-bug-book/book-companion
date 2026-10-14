@@ -3,7 +3,8 @@
 This is the protocol for Chapter 12. It lets you measure, on your own machine
 and budget, whether the harness in this repository changes how often a coding
 agent gets a task right, and what each accepted change costs. It does not come
-with results; Chapter 12 reports the author's own runs. Run it and record what
+with results; Chapter 12 reports the author's own runs, and
+`experiment/results/` has their records. Run it and record what
 you find, whatever it is.
 
 ## The question

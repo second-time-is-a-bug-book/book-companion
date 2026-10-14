@@ -12,9 +12,9 @@ The batch 2 plan is `experiment/tasks/BATCH-2.md`.
 ## Steps
 1. [x] Add the run records: `experiment/results/batch-1.jsonl`,
    `batch-2.jsonl`.
-2. [ ] Add `batch-2-haiku.jsonl`, `task-scope.json`, `METHODOLOGY.md`
+2. [x] Add `batch-2-haiku.jsonl`, `task-scope.json`, `METHODOLOGY.md`
    and the folder's `README.md`.
-3. [ ] Add `reproduce.ts` and `experiment/test/results.test.ts`; raise
+3. [x] Add `reproduce.ts` and `experiment/test/results.test.ts`; raise
    the test baseline; point `PROTOCOL.md` and the README at the folder.
 4. [ ] Remove this plan.
 

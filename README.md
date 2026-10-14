@@ -10,7 +10,8 @@ engineering with AI coding agents*. Everything the book shows runs here:
   copy and shows the guard catching it. No API key, no model, no network.
 - **A toy agent** (`toy-agent/`), an agent loop of two dozen lines driven by a scripted fake model.
 - **Templates** (`templates/`) to copy into your own repository, and an **experiment kit**
-  (`experiment/`) for measuring whether the harness pays.
+  (`experiment/`) for measuring whether the harness pays, with the author's own
+  run records in `experiment/results/`.
 
 TypeScript on Node, with zero runtime dependencies and no build step.
 
