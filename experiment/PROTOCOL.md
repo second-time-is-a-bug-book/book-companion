@@ -3,7 +3,8 @@
 This is the protocol for Chapter 12. It lets you measure, on your own machine
 and budget, whether the harness in this repository changes how often a coding
 agent gets a task right, and what each accepted change costs. It does not come
-with results. Run it and record what you find, whatever it is.
+with results; Chapter 12 reports the author's own runs. Run it and record what
+you find, whatever it is.
 
 ## The question
 
@@ -12,8 +13,9 @@ For a fixed task, compare:
 1. **No harness**: the agent gets the task and the code, nothing else.
 2. **Rules only**: the agent also gets `AGENTS.md`.
 3. **Full gates**: `AGENTS.md`, plus the gate as a pre-commit hook, the
-   destructive-command hook, and the instruction to run `npm run gate` and
-   `npm run evidence` before saying "done".
+   destructive-command hook, the stop hook (`done-check`), and the
+   instruction to run `npm run gate` and `npm run evidence` before saying
+   "done".
 
 And one cross-comparison: **a cheaper model with full gates** against **a
 stronger model with no harness**. That is the comparison most teams care about.
@@ -52,7 +54,7 @@ They fail on the code as shipped and pass on a correct implementation.
 |---|---|---|
 | `none` | the repository without `AGENTS.md` and `templates/` | nothing |
 | `rules` | the repository with `AGENTS.md` | `Follow the rules in AGENTS.md.` |
-| `gates` | as `rules`, plus the pre-commit gate and the destructive-command hook | `Follow the rules in AGENTS.md. Run npm run gate and npm run evidence before you say you are done.` |
+| `gates` | as `rules`, plus the pre-commit gate, the destructive-command hook and the stop hook | `Follow the rules in AGENTS.md. Run npm run gate and npm run evidence before you say you are done.` |
 
 The rest of the repository, guards and README included, is the same in every
 condition, except `docs/`, which is removed in every condition because it
@@ -70,8 +72,9 @@ npm ci && npm test                                     # must pass before the ag
 npm run gate                                           # must pass too, in every condition
 ```
 
-For `gates`, also wire `templates/hooks/agent-pre-action.sh` into your agent
-(see `templates/hooks/README.md`).
+For `gates`, also wire `templates/hooks/agent-pre-action.sh` and
+`templates/hooks/agent-stop.sh` into your agent (see
+`templates/hooks/README.md`).
 
 `npm run gate` passes in a clean copy of all three conditions. In `none` it
 reports `coupling-check` as skipped, because there is no `AGENTS.md` to read
