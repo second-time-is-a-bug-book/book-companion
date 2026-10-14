@@ -10,7 +10,7 @@ file). Session IDs and local paths are removed; nothing else changes.
 The batch 2 plan is `experiment/tasks/BATCH-2.md`.
 
 ## Steps
-1. [ ] Add the run records: `experiment/results/batch-1.jsonl`,
+1. [x] Add the run records: `experiment/results/batch-1.jsonl`,
    `batch-2.jsonl`.
 2. [ ] Add `batch-2-haiku.jsonl`, `task-scope.json`, `METHODOLOGY.md`
    and the folder's `README.md`.

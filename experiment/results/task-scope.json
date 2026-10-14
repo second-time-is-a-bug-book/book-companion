@@ -1,0 +1,105 @@
+{
+  "_about": "Expected files per task, for the 'unnecessary edits' measure. A changed file (compared with the run's start commit, new files included) that matches neither always_expected nor the task's expected globs counts as one unnecessary edit. Globs: ** any depth, * within one folder. The lists are deliberately generous: an edit counts as unnecessary only when no reasonable implementation of the task needs that file. Edit before the batch, never during it, and report the version you used.",
+  "always_expected": [
+    "plans/**",
+    "app/test/**"
+  ],
+  "tests": [
+    "app/test/**",
+    "app/e2e/**",
+    "legacy/characterisation/**",
+    "guards/test/**",
+    "toy-agent/test/**",
+    "experiment/test/**"
+  ],
+  "protected": [
+    "AGENTS.md",
+    ".claude/**",
+    ".harness/**",
+    ".github/**",
+    "guards/**",
+    "legacy/**",
+    "templates/**",
+    "drills/**",
+    "toy-agent/**",
+    "experiment/**",
+    "package.json",
+    "package-lock.json",
+    "tsconfig.json",
+    "playwright.config.ts"
+  ],
+  "tasks": {
+    "T1-partial-payments": {
+      "_why": "Payments need a table (a new migration, with its db.test.ts coupling), storage code, a money parser for the amount, a balance rule in the domain, and a route.",
+      "expected": [
+        "app/src/db/**",
+        "app/src/domain/**",
+        "app/src/http/**"
+      ]
+    },
+    "T2-late-fees": {
+      "_why": "The fee is a domain rule shown by the invoice route and the CSV. A fee rate or grace period in config.ts pulls in its two coupled mirrors.",
+      "expected": [
+        "app/src/domain/**",
+        "app/src/http/**",
+        "app/src/db/invoices.ts",
+        "app/src/config.ts",
+        "app/test/fixtures/pricing.json",
+        "app/docs/pricing.md"
+      ]
+    },
+    "T3-overdue-export": {
+      "_why": "The route reads a query parameter (server.ts and reply.ts pass it through), the filter uses the overdue rule, and the query may move into the db layer.",
+      "expected": [
+        "app/src/http/**",
+        "app/src/domain/**",
+        "app/src/db/invoices.ts"
+      ]
+    },
+    "T4-sub-cent-prices": {
+      "_why": "Prices move to a finer unit: money parsing and line totals in the domain, a new migration with its db.test.ts coupling, storage, the routes that show prices, possibly the form's placeholder, and the documented pricing example if the agent updates it.",
+      "expected": [
+        "app/src/domain/**",
+        "app/src/db/**",
+        "app/src/http/**",
+        "app/src/ui/**",
+        "app/test/fixtures/pricing.json",
+        "app/docs/pricing.md"
+      ]
+    },
+    "T5-legacy-options": {
+      "_why": "The change is in the legacy exporter; its README documents its options and quirks; new golden master cases go in legacy/characterisation/ (counted as test changes, not as unnecessary).",
+      "expected": [
+        "legacy/billing-export.js",
+        "legacy/README.md",
+        "legacy/characterisation/**"
+      ],
+      "allowed_protected": [
+        "legacy/billing-export.js",
+        "legacy/README.md"
+      ]
+    },
+    "T6-stored-totals": {
+      "_why": "A new migration with its db.test.ts coupling, storage code that writes the totals, and possibly the domain totals or routes reading the stored values.",
+      "expected": [
+        "app/src/db/**",
+        "app/src/domain/**",
+        "app/src/http/**"
+      ]
+    },
+    "T7-recurring-invoices": {
+      "_why": "Schedules need tables (a migration and db.test.ts), storage, date rules in the domain, a job, routes, and the timer in main.ts. A setting in config.ts pulls in its two coupled mirrors.",
+      "expected": [
+        "app/src/db/**",
+        "app/src/domain/**",
+        "app/src/http/**",
+        "app/src/jobs/**",
+        "app/src/main.ts",
+        "app/src/config.ts",
+        "app/test/fixtures/pricing.json",
+        "app/docs/pricing.md"
+      ]
+    }
+  },
+  "_batch2": "T4 to T7 entries added on 14 October 2026, before batch 2 ran, together with allowed_protected for T5."
+}
